@@ -27,7 +27,7 @@ class CustomTextFieldByText extends StatefulWidget {
       this.pw = false,
       this.labelText,
       this.hintText,
-      required this.icon,
+        this.icon,
       this.writeCenter = false,
       this.onFieldSubmitted,
       this.validator});

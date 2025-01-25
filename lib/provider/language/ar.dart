@@ -1,4 +1,5 @@
 final ar = {
+'confirm':'تأكيد',
   "email": "البريد الإلكتروني",
   "pw": "كلمة المرور",
   "old_pw": "كلمة المرور القديمة",
@@ -14,6 +15,7 @@ final ar = {
   "next": "التالى",
   "previous": "السابق",
   "done": "تم",
+  'Date of Join':'تاريخ الانضمام',
   "save": "حفظ",
   "edit": "تعديل",
   "delete": "حذف",
@@ -41,4 +43,11 @@ final ar = {
   'show_food': 'عرض الانظمه الغذائيه',
   'add_practise': 'اضافه تمرن',
   'show_practise': 'عرض التمارين',
+  'Welcome Banner':'مرحباً بك ',
+  'Members':'الاعضاء',
+  'Name of Participant':'اسم المشترك',
+  'Active members':'الأعضاء النشطين',
+  'price':'السعر',
+  "plan":'الخطه',
+  'discount':'خصم',
 };

@@ -1,3 +1,5 @@
+import 'package:athletic/home/screens/client_mangament/Home_page.dart';
+import 'package:athletic/home/screens/client_mangament/add_client/add_client.dart';
 import 'package:athletic/home/screens/main_page.dart';
 import 'package:athletic/models/home_drawer_screens_models.dart';
 import 'package:athletic/provider/language/get_text.dart';
@@ -9,12 +11,12 @@ class HomePageController extends ChangeNotifier {
         index: 0,
         icons: Icons.home_outlined,
         title: getText('home_page'),
-        widget: const MainPage()),
+        widget: const  Home_page()),
     HomeDrawerScreensModels(
         index: 1,
         icons: Icons.person_add,
         title: getText('add_client'),
-        widget: const MainPage()),
+        widget:   Add_client()),
     HomeDrawerScreensModels(
         index: 2,
         icons: Icons.people_outline,
