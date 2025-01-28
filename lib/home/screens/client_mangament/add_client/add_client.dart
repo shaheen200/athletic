@@ -94,6 +94,7 @@ class _Add_clientState extends State<Add_client> {
                       const Expanded(
                           child: CustomTextFieldByText(
                         labelText: "السعر",
+                        enable: false,
                       )),
                       const SizedBox(
                         width: 10,

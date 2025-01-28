@@ -37,7 +37,7 @@ class _Custom_drop_downState extends State<Custom_drop_down> {
         SizedBox(height: 10,),
         Container(
           width: 100,
-          height: 50,
+          height: 48,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: Theme.of(context).primaryColor, width: 3),

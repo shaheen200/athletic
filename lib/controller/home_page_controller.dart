@@ -1,4 +1,5 @@
 import 'package:athletic/home/screens/client_mangament/Home_page.dart';
+import 'package:athletic/home/screens/client_mangament/add_client/add_Session.dart';
 import 'package:athletic/home/screens/client_mangament/add_client/add_client.dart';
 import 'package:athletic/home/screens/main_page.dart';
 import 'package:athletic/models/home_drawer_screens_models.dart';
@@ -26,7 +27,7 @@ class HomePageController extends ChangeNotifier {
         index: 3,
         icons: Icons.add,
         title: getText('add_day'),
-        widget: const MainPage()),
+        widget:   Add_Session()),
     HomeDrawerScreensModels(
         index: 4,
         icons: Icons.workspace_premium_outlined,
