@@ -85,7 +85,7 @@ class _CustomTextFieldByText2State extends State<CustomTextFieldByText2> {
             child: TextFormField(
               onFieldSubmitted: widget.onFieldSubmitted,
               obscureText: show,
-              style: TextStyle(color: widget.color ?? Colors.black12),
+              style: const TextStyle(color: Colors.black),
               maxLines: widget.maxLines,
               enabled: widget.type == CustomTextFieldByTextType.date
                   ? false

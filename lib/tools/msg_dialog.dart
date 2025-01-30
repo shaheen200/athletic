@@ -49,7 +49,7 @@ msgDialog(
                     children: [
                       Expanded(
                         child: CustomBtn(
-                            btnColor: Colors.green,
+                            btnColor: Colors.red,
                             w: 0.115,
                             onClick: () {
                               Navigator.pop(context);
@@ -63,6 +63,7 @@ msgDialog(
                           visible: onClick == null ? false : true,
                           child: Expanded(
                             child: CustomBtn(
+                                btnColor: Colors.green,
                                 onClick: onClick,
                                 w: 0.115,
                                 text: getText("ok")),

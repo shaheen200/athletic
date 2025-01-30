@@ -53,5 +53,13 @@ final ar = {
   'subscrip_name': 'اسم المشترك',
   'enter_date': 'تاريخ الانضمام',
   'count': 'العدد',
-  'total': 'الاجمالي'
+  'total': 'الاجمالي',
+  'add_plan': 'اضافة خطة',
+  'count_day': 'عدد الايام',
+  'name': 'الاسم',
+  'num': 'رقم',
+  'delete_msg': 'هل تريد الحذف',
+  'equepment': 'المعدات',
+  'state': 'الحالة',
+  'fix': 'اصلاح'
 };

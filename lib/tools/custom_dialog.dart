@@ -32,7 +32,7 @@ customDialog(
                       children: [
                         Expanded(
                             child: CustomBtn(
-                                btnColor: Colors.green,
+                                btnColor: Colors.red,
                                 onClick: () {
                                   pOP(context);
                                 },
@@ -44,7 +44,9 @@ customDialog(
                             visible: ok == null ? false : true,
                             child: Expanded(
                                 child: CustomBtn(
-                                    onClick: ok, text: getText("ok")))),
+                                    btnColor: Colors.green,
+                                    onClick: ok,
+                                    text: getText("ok")))),
                       ],
                     )
                   ],
