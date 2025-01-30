@@ -1,76 +1,119 @@
 import 'package:athletic/tools/container/custom_container.dart';
+import 'package:athletic/tools/customText.dart';
 import 'package:athletic/tools/custom_appbar.dart';
 import 'package:athletic/tools/custom_btn/customBtn.dart';
 import 'package:athletic/tools/fields/custom_drop_down.dart';
-import 'package:athletic/tools/fields/custom_field_time.dart';
-import 'package:athletic/tools/fields/custom_text_field_by_text.dart';
 import 'package:flutter/material.dart';
 
-class Add_Session extends StatelessWidget {
-  Add_Session({super.key});
-  TextEditingController discound = TextEditingController();
-  TextEditingController data = TextEditingController();
+import '../../../../provider/language/get_text.dart';
+import '../../../../tools/fields/custom_field_by_text_2.dart';
+
+class AddSession extends StatefulWidget {
+  const AddSession({super.key});
+
+  @override
+  State<AddSession> createState() => _AddSessionState();
+}
+
+class _AddSessionState extends State<AddSession> {
+  TextEditingController price = TextEditingController();
+  TextEditingController count = TextEditingController();
+  TextEditingController total = TextEditingController();
+  final CustomDropDownController controller = CustomDropDownController();
+
   void date(de) {}
+
+  @override
+  void initState() {
+    controller.equal([
+      CustomDropDownItems(text: '123', onTap: () {}),
+      CustomDropDownItems(text: '1233', onTap: () {}),
+      CustomDropDownItems(text: '124443', onTap: () {}),
+      CustomDropDownItems(text: '1235', onTap: () {}),
+    ]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Custom_appbar(),
-        SizedBox(
-          height: MediaQuery.of(context).size.height / 8,
-        ),
-        CustomContainer(
-          width: .6,
-          height: .4,
+        const CustomAppbar(),
+        SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+        Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Row(
-                children: [
-                  Custom_drop_down(
-                      title: 'الخطه', items: ['حصه', 'كارديو', 'اطفال']),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  const Expanded(
-                      child: CustomTextFieldByText(
-                    labelText: "السعر",
-                    enable: false,
-                  )),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                  Expanded(
-                      child: CustomTextFieldByText(
-                    labelText: "خصم",
-                    controller: discound,
-                  )),
-                ],
+              TEXT(
+                color: Theme.of(context).primaryColor,
+                text: getText('add_day'),
+                size: 28,
+                bold: true,
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                      CustomBtn(onClick: () {}, text: 'تأكيد'),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width / 4,
-                      child: CustomFieldDate(
-                        onSelect: date,
-                        controller: data,
-                        labelText: 'تاريخ الانضمام',
-                      )),
-                          
-
-                ],
+              const SizedBox(height: 10),
+              CustomContainer(
+                width: .5,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: CustomDropDown(
+                            controller: controller,
+                            labelText: getText('plan'),
+                            onChanged: (p0) {},
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Expanded(
+                            child: CustomTextFieldByText2(
+                          icon: Icons.date_range_rounded,
+                          onChanged: (p0) {},
+                          enable: false,
+                          controller: price,
+                          labelText: getText('price'),
+                        ))
+                      ],
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                            flex: 1,
+                            child: CustomTextFieldByText2(
+                              controller: count,
+                              labelText: getText('count'),
+                            )),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                            flex: 1,
+                            child: CustomTextFieldByText2(
+                              labelText: getText('total'),
+                              controller: total,
+                            )),
+                      ],
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
+                    Align(
+                        alignment: Alignment.centerLeft,
+                        child: CustomBtn(onClick: () {}, text: 'تأكيد'))
+                  ],
+                ),
               ),
             ],
           ),
-        ),
-        const SizedBox(
-          height: 30,
         ),
       ],
     );

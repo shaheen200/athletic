@@ -1,75 +1,231 @@
 import 'package:athletic/tools/customText.dart';
 import 'package:flutter/material.dart';
 
-class Custom_drop_down extends StatefulWidget {
-  final List items;
-  final String title;
-
-  Custom_drop_down({Key? key, required this.items, required this.title})
-      : super(key: key);  
+class CustomDropDown extends StatefulWidget {
+  final String? labelText;
+  final void Function(dynamic)? onChanged;
+  final void Function(CustomDropDownItems)? onChangedItems;
+  final String? Function(String?)? validator;
+  final double margin;
+  final String? hintText;
+  final CustomDropDownController controller;
+  final bool showClear;
+  final String? value;
+  final void Function()? afterClear;
+  final Color? color;
+  const CustomDropDown({
+    super.key,
+    required this.controller,
+    required this.onChanged,
+    this.validator,
+    this.margin = 5,
+    this.hintText,
+    this.labelText,
+    this.showClear = false,
+    this.afterClear,
+    this.value,
+    this.onChangedItems,
+    this.color,
+  });
 
   @override
-  State<Custom_drop_down> createState() => _Custom_drop_downState();
+  State<CustomDropDown> createState() => _CustomDropDownState();
 }
 
-class _Custom_drop_downState extends State<Custom_drop_down> {
-  dynamic dropdownValue;  
-
+class _CustomDropDownState extends State<CustomDropDown> {
   @override
   void initState() {
+    widget.controller.addListener(() {
+      setState(() {});
+    });
     super.initState();
-    dropdownValue = widget.items.isNotEmpty
-        ? widget.items[0]
-        : null;  
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        TEXT(
-          text: widget.title,
-          size: 18,
-          bold: true,
-          color: Theme.of(context).primaryColor,
-        ),  
-        SizedBox(height: 10,),
-        Container(
-          width: 100,
-          height: 48,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Theme.of(context).primaryColor, width: 3),
-          ),
-          child: Center(
-            child: DropdownButton<dynamic>(
-              value: dropdownValue,
-              onChanged: (newValue) {
-                setState(() {
-                  dropdownValue = newValue!;
-                });
-              },
-              items: widget.items.map<DropdownMenuItem<dynamic>>((value) {
-                return DropdownMenuItem<dynamic>(
-                  value: value,
-                  child: Text(
-                    value,
-                    style: const TextStyle(fontSize: 18, color: Colors.black),
-                  ),
-                );
-              }).toList(),
-              dropdownColor: Colors.white,
-              style: const TextStyle(color: Colors.blue, fontSize: 18),
-              icon: const Icon(
-                Icons.keyboard_arrow_down_outlined,
-                color: Colors.black,
-              ),
-              underline: const SizedBox(),
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Visibility(
+            visible: widget.labelText != null,
+            child: TEXT(
+              text: " ${widget.labelText} ",
+              size: 20,
+              bold: true,
+              color: widget.color ?? Colors.black,
             ),
           ),
-        ),
-      ],
+          Visibility(
+            visible: widget.labelText != null,
+            child: const SizedBox(height: 6),
+          ),
+          Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: widget.color ?? Colors.black12),
+            child: Row(
+              children: [
+                const SizedBox(width: 10),
+                Expanded(
+                  child: DropdownButtonFormField(
+                    iconEnabledColor: Theme.of(context).primaryColorDark,
+                    iconDisabledColor: Theme.of(context).primaryColorDark,
+                    validator: widget.validator,
+                    value: widget.value ?? widget.controller.value,
+                    dropdownColor: Theme.of(context).primaryColorLight,
+                    style: TextStyle(color: Theme.of(context).primaryColor),
+                    decoration: InputDecoration(
+                      hintText: widget.hintText,
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.only(left: 5, right: 5),
+                    ),
+                    items: widget.controller.items
+                        .where((element) => element.text.isNotEmpty)
+                        .map((e) {
+                      return DropdownMenuItem(
+                        value: e.value ?? e.text,
+                        onTap: () async {
+                          if (e.onTap != null) {
+                            e.onTap!();
+                          }
+                          widget.controller.setText(e.text);
+                        },
+                        child: TEXT(
+                          text: e.text,
+                          size: 17,
+                          color: Theme.of(context).primaryColorDark,
+                        ),
+                      );
+                    }).toList(),
+                    onChanged: (value) {
+                      widget.controller.setValue("$value");
+                      widget.onChanged?.call(value);
+                      // Clear selection if necessary
+                      if (widget.controller.value == null ||
+                          widget.controller.value!.isEmpty) {
+                        widget.controller.clear();
+                      }
+                      if (widget.onChangedItems != null) {
+                        widget.onChangedItems!.call(CustomDropDownItems(
+                            text: widget.controller.text.toString(),
+                            value: value.toString(),
+                            onTap: () {}));
+                      }
+                    },
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Visibility(
+                  visible: widget.showClear,
+                  child: IconButton(
+                    icon: const Icon(Icons.clear),
+                    onPressed: () {
+                      setState(() {
+                        widget.controller.clear();
+                      });
+                      if (widget.afterClear != null) {
+                        widget.afterClear!();
+                      }
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
+  }
+}
+
+class CustomDropDownItems {
+  final String text;
+  final String? value;
+  final void Function()? onTap;
+
+  CustomDropDownItems({required this.text, required this.onTap, this.value});
+}
+
+class CustomDropDownController extends ChangeNotifier {
+  List<CustomDropDownItems> items = [];
+  List<CustomDropDownItems> _items = [];
+  String? initValue;
+  String? value;
+  String? text;
+
+  void setInit(String value) {
+    initValue = value;
+    this.value = value;
+    notifyListeners();
+  }
+
+  void setValue(String value) {
+    this.value = value;
+    notifyListeners();
+  }
+
+  void setText(String value) {
+    text = value;
+  }
+
+  void add(CustomDropDownItems item) {
+    items.add(item);
+    _items = items;
+    notifyListeners();
+  }
+
+  void equal(List<CustomDropDownItems> list) {
+    initValue = null;
+    value = null;
+    text = null;
+    items = list;
+    _items = items;
+    notifyListeners();
+  }
+
+  void edit(CustomDropDownItems item, int index) {
+    initValue = null;
+    value = null;
+    if (items.isNotEmpty) {
+      items[index] = item;
+      _items = items;
+      items = _items.where((element) => element.text.isNotEmpty).toList();
+    } else {
+      items.add(item);
+      _items = items;
+      items = _items.where((element) => element.text.isNotEmpty).toList();
+    }
+    notifyListeners();
+  }
+
+  void delete(String value) {
+    items.removeWhere((element) => element.text == value);
+    _items = items;
+    notifyListeners();
+  }
+
+  void deleteIndex(int index) {
+    initValue = null;
+    value = null;
+    items.removeAt(index);
+    _items = items;
+    notifyListeners();
+  }
+
+  void clear() {
+    value = null;
+    initValue = null;
+    text = null;
+    notifyListeners();
+  }
+
+  void search(String p0) {
+    initValue = null;
+    value = null;
+    items = _items.where((element) => element.text.contains(p0)).toList();
+    notifyListeners();
   }
 }

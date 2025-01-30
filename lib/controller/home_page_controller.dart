@@ -1,10 +1,11 @@
 import 'package:athletic/home/screens/client_mangament/Home_page.dart';
-import 'package:athletic/home/screens/client_mangament/add_client/add_Session.dart';
 import 'package:athletic/home/screens/client_mangament/add_client/add_client.dart';
 import 'package:athletic/home/screens/main_page.dart';
 import 'package:athletic/models/home_drawer_screens_models.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:flutter/material.dart';
+
+import '../home/screens/client_mangament/add_client/add_Session.dart';
 
 class HomePageController extends ChangeNotifier {
   final List<HomeDrawerScreensModels> widgets = [
@@ -12,12 +13,12 @@ class HomePageController extends ChangeNotifier {
         index: 0,
         icons: Icons.home_outlined,
         title: getText('home_page'),
-        widget: const  Home_page()),
+        widget: const Home_page()),
     HomeDrawerScreensModels(
         index: 1,
         icons: Icons.person_add,
         title: getText('add_client'),
-        widget:   Add_client()),
+        widget: const AddClient()),
     HomeDrawerScreensModels(
         index: 2,
         icons: Icons.people_outline,
@@ -27,7 +28,7 @@ class HomePageController extends ChangeNotifier {
         index: 3,
         icons: Icons.add,
         title: getText('add_day'),
-        widget:   Add_Session()),
+        widget: const AddSession()),
     HomeDrawerScreensModels(
         index: 4,
         icons: Icons.workspace_premium_outlined,
