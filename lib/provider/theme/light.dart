@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 final ThemeData lightTheme = ThemeData(
     primaryColorLight: Colors.white,
     primaryColorDark: Colors.black,
+    
     primaryColor: const Color(0xff1A1363),
     useMaterial3: true,
     splashColor: Colors.blue.shade200,
@@ -18,6 +19,7 @@ final ThemeData lightTheme = ThemeData(
             fontSize: 22,
             fontWeight: FontWeight.bold,
             fontFamily: "tajawal")),
+            hintColor: Color(0xffFFFADF),
     drawerTheme: const DrawerThemeData(
         backgroundColor: Colors.white,
         elevation: 20,

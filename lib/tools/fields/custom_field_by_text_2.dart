@@ -85,7 +85,7 @@ class _CustomTextFieldByText2State extends State<CustomTextFieldByText2> {
             child: TextFormField(
               onFieldSubmitted: widget.onFieldSubmitted,
               obscureText: show,
-              style: const TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.white,fontSize: 18),
               maxLines: widget.maxLines,
               enabled: widget.type == CustomTextFieldByTextType.date
                   ? false
@@ -129,7 +129,9 @@ class _CustomTextFieldByText2State extends State<CustomTextFieldByText2> {
                         ),
                       )),
                   hintText: widget.hintText,
-                  contentPadding: const EdgeInsets.only(left: 15, right: 15),
+                  
+                  hintStyle: TextStyle(color: Theme.of(context).primaryColorLight,fontSize: 18,),
+                  contentPadding: const EdgeInsets.only(left: 15, right: 30),
                   border: _border,
                   errorBorder: _border,
                   enabledBorder: _border,

@@ -1,7 +1,10 @@
 final ar = {
+  'Gym Members':'أعضاء الصالة الرياضية',
+  'Active Members':'الأعضاء النشطين',
   'confirm': 'تأكيد',
   "email": "البريد الإلكتروني",
   "pw": "كلمة المرور",
+  "Gender":"الجنس",
   "old_pw": "كلمة المرور القديمة",
   "new_pw": "كلمة المرور الجديدة",
   "confirm_pw": "تأكيد كلمة المرور",
@@ -48,6 +51,12 @@ final ar = {
   'Name of Participant': 'اسم المشترك',
   'Active members': 'الأعضاء النشطين',
   'price': 'السعر',
+  'Member ID':' العضوI D',
+  "Edit":"تعديل",
+  "Manage Coaches":"إدارة المدربين",
+  "Active Coaches":"المدربين النشطين",
+  'Date Enrolled':'تاريخ التسجيل',
+  'Date Expiration':'تاريخ انتهاء',
   "plan": 'الخطه',
   'discount': 'خصم',
   'subscrip_name': 'اسم المشترك',
@@ -57,9 +66,13 @@ final ar = {
   'add_plan': 'اضافة خطة',
   'count_day': 'عدد الايام',
   'name': 'الاسم',
+  'Add Coach':"إضافة مدرب",
   'num': 'رقم',
   'delete_msg': 'هل تريد الحذف',
   'equepment': 'المعدات',
   'state': 'الحالة',
-  'fix': 'اصلاح'
+  'fix': 'اصلاح',
+  'phone':"الهاتف",
+  'Actions':'الصلاحيات',
+  'Coach Salary':"الراتب"
 };

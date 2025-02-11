@@ -3,6 +3,8 @@ import 'package:athletic/home/screens/client_mangament/add_client/add_client.dar
 import 'package:athletic/home/screens/equipmnt_mangament/equipmen_screen.dart';
 import 'package:athletic/home/screens/main_page.dart';
 import 'package:athletic/home/screens/plan_mangament/plan_screen.dart';
+import 'package:athletic/home/screens/show_coaches/show_coaches.dart';
+import 'package:athletic/home/screens/show_member/show.dart';
 import 'package:athletic/models/home_drawer_screens_models.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +32,7 @@ class HomePageController extends ChangeNotifier {
         index: 3,
         icons: Icons.people_outline,
         title: getText('show_client'),
-        widget: const MainPage()),
+        widget: Show_Member()),
     HomeDrawerScreensModels(
         index: 4,
         icons: Icons.add,
@@ -45,7 +47,7 @@ class HomePageController extends ChangeNotifier {
         index: 6,
         icons: Icons.people_alt,
         title: getText('show_emp'),
-        widget: const MainPage()),
+        widget: Show_Coaches()),
     HomeDrawerScreensModels(
         index: 7,
         icons: Icons.visibility_outlined,
