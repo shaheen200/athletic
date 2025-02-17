@@ -1,4 +1,5 @@
 import 'package:athletic/provider/language/get_text.dart';
+import 'package:athletic/tools/Custom_Table.dart';
 import 'package:athletic/tools/container/custom_container.dart';
 import 'package:athletic/tools/customText.dart';
 import 'package:athletic/tools/custom_appbar.dart';
@@ -102,35 +103,13 @@ class Show_Member extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 14.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TEXT(
-                        text: "Ahmed",
-                        size: 16,
-                        color: Theme.of(context).primaryColorLight,
-                      ),
-                      TEXT(
-                          text: "1",
-                          size: 16,
-                          color: Theme.of(context).primaryColorLight),
-                      TEXT(
-                          text: "Jan 11",
-                          size: 16,
-                          color: Theme.of(context).primaryColorLight),
-                      TEXT(
-                          text: "Feb 11",
-                          size: 16,
-                          color: Theme.of(context).primaryColorLight),
-                      CustomBtn(
-                        onClick: () {},
-                        text: getText("Edit"),
-                      
-                        textcolor: Theme.of(context).primaryColorDark,
-                        btnColor: Theme.of(context).primaryColorLight,
-                        w: .08,
-                        
-                      )
+                  child: CustomHeadTable(
+                    headData: [
+                      CustomHeadTableItems(flex: 0, text: ('Ahmed Elkholy')),
+                      CustomHeadTableItems(flex: 2, text: (' 835')),
+                      CustomHeadTableItems(flex: 2, text: ('3/5/2025')),
+                      CustomHeadTableItems(flex: 2, text: ('5/6/7777')),
+                      CustomHeadTableItems(flex: 0, text: getText('Actions')),
                     ],
                   ),
                 )

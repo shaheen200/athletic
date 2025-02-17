@@ -75,7 +75,8 @@ class _LoginPageState extends State<LoginPage> {
                         goPage(context, const HomePage());
                         // if (formKey.currentState!.validate()) {}
                       },
-                      text: getText("login")),
+                      text: getText("login"),textcolor: Theme.of(context).primaryColorLight,),
+                      
                 ],
               ),
             ),

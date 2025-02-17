@@ -26,19 +26,7 @@ class Show_Coaches extends StatelessWidget {
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.topRight,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 60, bottom: 10),
-            child: CustomBtn(
-              onClick: () {},
-              text: getText('Add Coach'),
-              
-              textcolor:   Theme.of(context).primaryColor,
-              btnColor: Theme.of(context).primaryColorLight,
-            ),
-          ),
-        ),
+        
         CustomContainer(
           width: .7,
           height: .6,

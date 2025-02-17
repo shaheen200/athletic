@@ -1,42 +1,23 @@
+import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/container/custom_container.dart';
 import 'package:athletic/tools/customText.dart';
 import 'package:athletic/tools/custom_appbar.dart';
 import 'package:athletic/tools/custom_btn/customBtn.dart';
 import 'package:athletic/tools/fields/custom_drop_down.dart';
+import 'package:athletic/tools/fields/custom_field_by_text_2.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../provider/language/get_text.dart';
-import '../../../../tools/fields/custom_field_by_text_2.dart';
+class Add_Coach extends StatelessWidget {
+    Add_Coach({super.key});
+CustomDropDownController controller=CustomDropDownController() ;
+TextEditingController name=TextEditingController();
+TextEditingController salary=TextEditingController();
 
-class AddSession extends StatefulWidget {
-  const AddSession({super.key});
-
-  @override
-  State<AddSession> createState() => _AddSessionState();
-}
-
-class _AddSessionState extends State<AddSession> {
-  TextEditingController price = TextEditingController();
-  TextEditingController count = TextEditingController();
-  TextEditingController total = TextEditingController();
-  final CustomDropDownController controller = CustomDropDownController();
-
-  void date(de) {}
-
-  @override
-  void initState() {
-    controller.equal([
-      CustomDropDownItems(text: '123', onTap: () {}),
-      CustomDropDownItems(text: '1233', onTap: () {}),
-      CustomDropDownItems(text: '124443', onTap: () {}),
-      CustomDropDownItems(text: '1235', onTap: () {}),
-    ]);
-    super.initState();
-  }
+TextEditingController phone=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+     return Column(
       children: [
         const CustomAppbar(),
         SizedBox(height: MediaQuery.of(context).size.height * 0.1),
@@ -48,7 +29,7 @@ class _AddSessionState extends State<AddSession> {
             children: [
               TEXT(
                 color: Theme.of(context).primaryColor,
-                text: getText('add_day'),
+                text: getText('Add Coach'),
                 size: 28,
                 bold: true,
               ),
@@ -58,13 +39,23 @@ class _AddSessionState extends State<AddSession> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    CustomTextFieldByText2(
+                                          icon: Icons.date_range_rounded,
+                                          onChanged: (p0) {},
+                                          enable: false,
+                                          controller: name,
+                                           labelText: getText('name'),
+                                        ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.02,
+                    ),
                     Row(
                       children: [
-                        Expanded(
+                          Expanded(
                           flex: 1,
                           child: CustomDropDown(
                             controller: controller,
-                            labelText: getText('plan'),
+                            labelText: getText('Gender'),
                             onChanged: (p0) {},
                           ),
                         ),
@@ -72,25 +63,10 @@ class _AddSessionState extends State<AddSession> {
                           width: 5,
                         ),
                         Expanded(
-                            child: CustomTextFieldByText2(
-                          icon: Icons.date_range_rounded,
-                          onChanged: (p0) {},
-                          enable: false,
-                          controller: price,
-                          labelText: getText('price'),
-                        ))
-                      ],
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.02,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
                             flex: 1,
                             child: CustomTextFieldByText2(
-                              controller: count,
-                              labelText: getText('count'),
+                               labelText: getText('Salary'),
+                               controller: salary,
                             )),
                         const SizedBox(
                           width: 10,
@@ -98,9 +74,9 @@ class _AddSessionState extends State<AddSession> {
                         Expanded(
                             flex: 1,
                             child: CustomTextFieldByText2(
-                              labelText: getText('total'),
-                              controller: total,
-                            )),
+                              labelText: getText('phone'),
+                              controller: phone,
+                             )),
                       ],
                     ),
                     SizedBox(

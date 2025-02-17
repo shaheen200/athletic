@@ -3,6 +3,7 @@ import 'package:athletic/home/screens/client_mangament/add_client/add_client.dar
 import 'package:athletic/home/screens/equipmnt_mangament/equipmen_screen.dart';
 import 'package:athletic/home/screens/main_page.dart';
 import 'package:athletic/home/screens/plan_mangament/plan_screen.dart';
+import 'package:athletic/home/screens/show_coaches/add_coach.dart';
 import 'package:athletic/home/screens/show_coaches/show_coaches.dart';
 import 'package:athletic/home/screens/show_member/show.dart';
 import 'package:athletic/models/home_drawer_screens_models.dart';
@@ -42,7 +43,7 @@ class HomePageController extends ChangeNotifier {
         index: 5,
         icons: Icons.workspace_premium_outlined,
         title: getText('add_emp'),
-        widget: const MainPage()),
+        widget: Add_Coach()),
     HomeDrawerScreensModels(
         index: 6,
         icons: Icons.people_alt,

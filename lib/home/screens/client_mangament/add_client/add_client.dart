@@ -137,7 +137,7 @@ class _AddClientState extends State<AddClient> {
                     ),
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: CustomBtn(onClick: () {}, text: 'تأكيد'))
+                        child: CustomBtn(onClick: () {}, text: 'تأكيد',textcolor: Theme.of(context).primaryColorLight,))
                   ],
                 ),
               ),

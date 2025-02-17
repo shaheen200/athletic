@@ -94,7 +94,7 @@ class _AddEquipmentState extends State<AddEquipment> {
                     ),
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: CustomBtn(onClick: () {}, text: 'تأكيد'))
+                        child: CustomBtn(onClick: () {}, text: 'تأكيد',textcolor: Theme.of(context).primaryColorLight,))
                   ],
                 ),
               ),
