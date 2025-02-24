@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/container/custom_container.dart';
 import 'package:athletic/tools/customText.dart';
@@ -7,17 +9,17 @@ import 'package:athletic/tools/fields/custom_drop_down.dart';
 import 'package:athletic/tools/fields/custom_field_by_text_2.dart';
 import 'package:flutter/material.dart';
 
-class Add_Coach extends StatelessWidget {
-    Add_Coach({super.key});
-CustomDropDownController controller=CustomDropDownController() ;
-TextEditingController name=TextEditingController();
-TextEditingController salary=TextEditingController();
+class AddEmpolyee extends StatelessWidget {
+  AddEmpolyee({super.key});
+  CustomDropDownController controller = CustomDropDownController();
+  TextEditingController name = TextEditingController();
+  TextEditingController salary = TextEditingController();
 
-TextEditingController phone=TextEditingController();
+  TextEditingController phone = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-     return Column(
+    return Column(
       children: [
         const CustomAppbar(),
         SizedBox(height: MediaQuery.of(context).size.height * 0.1),
@@ -40,18 +42,18 @@ TextEditingController phone=TextEditingController();
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     CustomTextFieldByText2(
-                                          icon: Icons.date_range_rounded,
-                                          onChanged: (p0) {},
-                                          enable: false,
-                                          controller: name,
-                                           labelText: getText('name'),
-                                        ),
+                      icon: Icons.date_range_rounded,
+                      onChanged: (p0) {},
+                      enable: false,
+                      controller: name,
+                      labelText: getText('name'),
+                    ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     Row(
                       children: [
-                          Expanded(
+                        Expanded(
                           flex: 1,
                           child: CustomDropDown(
                             controller: controller,
@@ -65,8 +67,8 @@ TextEditingController phone=TextEditingController();
                         Expanded(
                             flex: 1,
                             child: CustomTextFieldByText2(
-                               labelText: getText('Salary'),
-                               controller: salary,
+                              labelText: getText('Salary'),
+                              controller: salary,
                             )),
                         const SizedBox(
                           width: 10,
@@ -76,7 +78,7 @@ TextEditingController phone=TextEditingController();
                             child: CustomTextFieldByText2(
                               labelText: getText('phone'),
                               controller: phone,
-                             )),
+                            )),
                       ],
                     ),
                     SizedBox(
@@ -84,7 +86,11 @@ TextEditingController phone=TextEditingController();
                     ),
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: CustomBtn(onClick: () {}, text: 'تأكيد',textcolor: Theme.of(context).primaryColorLight,))
+                        child: CustomBtn(
+                          onClick: () {},
+                          text: 'تأكيد',
+                          textcolor: Theme.of(context).primaryColorLight,
+                        ))
                   ],
                 ),
               ),
