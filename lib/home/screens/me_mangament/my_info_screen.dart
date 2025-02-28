@@ -14,6 +14,7 @@ class MyInfoScreen extends StatefulWidget {
 
 class _MyInfoScreenState extends State<MyInfoScreen> {
   TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController salary = TextEditingController();
   @override
@@ -36,16 +37,27 @@ class _MyInfoScreenState extends State<MyInfoScreen> {
                     const CustomImage(path: 'image/user.png', w: 0.2, h: 0.1),
                     const SizedBox(height: 20),
                     CustomTextFieldByText2(
+                      textWriteColor: Colors.black,
                       controller: name,
                       labelText: getText('name'),
                     ),
                     const SizedBox(height: 10),
                     CustomTextFieldByText2(
+                      textWriteColor: Colors.black,
+                      controller: email,
+                      labelText: getText('email'),
+                    ),
+                    const SizedBox(height: 10),
+                    CustomTextFieldByText2(
+                      textWriteColor: Colors.black,
+                      type: CustomTextFieldByTextType.number,
                       controller: phone,
                       labelText: getText('phone'),
                     ),
                     const SizedBox(height: 10),
                     CustomTextFieldByText2(
+                      textWriteColor: Colors.black,
+                      type: CustomTextFieldByTextType.number,
                       controller: salary,
                       labelText: getText('Coach Salary'),
                     ),

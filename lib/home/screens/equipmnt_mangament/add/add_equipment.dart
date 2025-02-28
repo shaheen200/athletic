@@ -65,6 +65,7 @@ class _AddEquipmentState extends State<AddEquipment> {
                         Expanded(
                             child: CustomTextFieldByText2(
                           color: Colors.white,
+                          textWriteColor: Colors.black,
                           controller: name,
                           labelText: getText('name'),
                         )),
@@ -73,6 +74,8 @@ class _AddEquipmentState extends State<AddEquipment> {
                         ),
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
+                          type: CustomTextFieldByTextType.number,
                           color: Colors.white,
                           controller: price,
                           labelText: getText('price'),
@@ -94,7 +97,11 @@ class _AddEquipmentState extends State<AddEquipment> {
                     ),
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: CustomBtn(onClick: () {}, text: 'تأكيد',textcolor: Theme.of(context).primaryColorLight,))
+                        child: CustomBtn(
+                          onClick: () {},
+                          text: 'تأكيد',
+                          textcolor: Theme.of(context).primaryColorLight,
+                        ))
                   ],
                 ),
               ),

@@ -17,7 +17,7 @@ class AddSession extends StatefulWidget {
 
 class _AddSessionState extends State<AddSession> {
   TextEditingController price = TextEditingController();
-  TextEditingController count = TextEditingController();
+  TextEditingController name = TextEditingController();
   TextEditingController total = TextEditingController();
   final CustomDropDownController controller = CustomDropDownController();
 
@@ -73,6 +73,8 @@ class _AddSessionState extends State<AddSession> {
                         ),
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
+                          type: CustomTextFieldByTextType.number,
                           icon: Icons.date_range_rounded,
                           onChanged: (p0) {},
                           enable: false,
@@ -89,8 +91,10 @@ class _AddSessionState extends State<AddSession> {
                         Expanded(
                             flex: 1,
                             child: CustomTextFieldByText2(
-                              controller: count,
-                              labelText: getText('count'),
+                              textWriteColor: Colors.black,
+                              type: CustomTextFieldByTextType.text,
+                              controller: name,
+                              labelText: getText('name'),
                             )),
                         const SizedBox(
                           width: 10,
@@ -108,7 +112,11 @@ class _AddSessionState extends State<AddSession> {
                     ),
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: CustomBtn(onClick: () {}, text: 'تأكيد',textcolor: Theme.of(context).primaryColorLight,))
+                        child: CustomBtn(
+                          onClick: () {},
+                          text: 'تأكيد',
+                          textcolor: Theme.of(context).primaryColorLight,
+                        ))
                   ],
                 ),
               ),

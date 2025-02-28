@@ -44,6 +44,15 @@ class _ShowMemberViewState extends State<ShowMemberView> {
               widget: CustomPop(
                 items: [
                   CustomPopItems(
+                    text: getText('reco_day'),
+                  ),
+                  CustomPopItems(
+                    text: getText('history_days'),
+                  ),
+                  CustomPopItems(
+                    text: getText('history_subscrip'),
+                  ),
+                  CustomPopItems(
                     text: getText('edit'),
                   ),
                   CustomPopItems(

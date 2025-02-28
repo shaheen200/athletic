@@ -9,13 +9,33 @@ import 'package:athletic/tools/fields/custom_drop_down.dart';
 import 'package:athletic/tools/fields/custom_field_by_text_2.dart';
 import 'package:flutter/material.dart';
 
-class AddEmpolyee extends StatelessWidget {
-  AddEmpolyee({super.key});
-  CustomDropDownController controller = CustomDropDownController();
-  TextEditingController name = TextEditingController();
-  TextEditingController salary = TextEditingController();
+class AddEmpolyee extends StatefulWidget {
+  const AddEmpolyee({super.key});
 
+  @override
+  State<AddEmpolyee> createState() => _AddEmpolyeeState();
+}
+
+class _AddEmpolyeeState extends State<AddEmpolyee> {
+  CustomDropDownController gender = CustomDropDownController();
+  CustomDropDownController job = CustomDropDownController();
+  TextEditingController name = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController salary = TextEditingController();
   TextEditingController phone = TextEditingController();
+
+  @override
+  void initState() {
+    gender.equal([
+      CustomDropDownItems(text: getText('male'), onTap: () {}),
+      CustomDropDownItems(text: getText('female'), onTap: () {})
+    ]);
+    job.equal([
+      CustomDropDownItems(text: 'كاشير', onTap: () {}),
+      CustomDropDownItems(text: 'كابتن', onTap: () {})
+    ]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +51,7 @@ class AddEmpolyee extends StatelessWidget {
             children: [
               TEXT(
                 color: Theme.of(context).primaryColor,
-                text: getText('Add Coach'),
+                text: getText('add_emp'),
                 size: 28,
                 bold: true,
               ),
@@ -41,29 +61,30 @@ class AddEmpolyee extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    CustomTextFieldByText2(
-                      icon: Icons.date_range_rounded,
-                      onChanged: (p0) {},
-                      enable: false,
-                      controller: name,
-                      labelText: getText('name'),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextFieldByText2(
+                            onChanged: (p0) {},
+                            controller: email,
+                            labelText: getText('email'),
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: CustomTextFieldByText2(
+                            onChanged: (p0) {},
+                            controller: name,
+                            labelText: getText('name'),
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     Row(
                       children: [
-                        Expanded(
-                          flex: 1,
-                          child: CustomDropDown(
-                            controller: controller,
-                            labelText: getText('Gender'),
-                            onChanged: (p0) {},
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
                         Expanded(
                             flex: 1,
                             child: CustomTextFieldByText2(
@@ -79,6 +100,29 @@ class AddEmpolyee extends StatelessWidget {
                               labelText: getText('phone'),
                               controller: phone,
                             )),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: CustomDropDown(
+                            controller: gender,
+                            labelText: getText('Gender'),
+                            onChanged: (p0) {},
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: CustomDropDown(
+                            controller: job,
+                            labelText: getText('job'),
+                            onChanged: (p0) {},
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(

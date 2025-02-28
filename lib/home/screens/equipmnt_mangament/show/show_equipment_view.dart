@@ -2,7 +2,6 @@ import 'package:athletic/controller/application_controller.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/Custom_Table.dart';
 import 'package:athletic/tools/customText.dart';
-import 'package:athletic/tools/msg_dialog.dart';
 import 'package:athletic/tools/pop_menu/custom_pop.dart';
 import 'package:flutter/material.dart';
 
@@ -63,18 +62,6 @@ class _ShowEquipmentViewState extends State<ShowEquipmentView> {
                   text: getText('fix'),
                   onTap: () {},
                 ),
-                CustomPopItems(
-                  text: getText('delete'),
-                  onTap: () {
-                    msgDialog(
-                        context1: context,
-                        state: 0,
-                        text: getText('delete_msg'),
-                        onClick: () {
-                          widget.controller.delete(index);
-                        });
-                  },
-                )
               ]))
         ]);
       },

@@ -50,6 +50,7 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                       children: [
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
                           color: Colors.white,
                           controller: name,
                           labelText: getText('name'),
@@ -59,6 +60,8 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                         ),
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
+                          type: CustomTextFieldByTextType.number,
                           color: Colors.white,
                           controller: countDay,
                           labelText: getText('count_day'),
@@ -68,6 +71,8 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                         ),
                         Expanded(
                             child: CustomTextFieldByText2(
+                          type: CustomTextFieldByTextType.number,
+                          textWriteColor: Colors.black,
                           color: Colors.white,
                           controller: price,
                           labelText: getText('price'),
@@ -78,8 +83,13 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     Align(
-                        alignment: Alignment.centerLeft,
-                        child: CustomBtn(onClick: () {}, text: 'تأكيد',textcolor: Theme.of(context).primaryColorLight,),)
+                      alignment: Alignment.centerLeft,
+                      child: CustomBtn(
+                        onClick: () {},
+                        text: 'تأكيد',
+                        textcolor: Theme.of(context).primaryColorLight,
+                      ),
+                    )
                   ],
                 ),
               ),

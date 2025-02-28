@@ -40,6 +40,8 @@ class _ShowEmpolyeeViewState extends State<ShowEmpolyeeView> {
             CustomBodyTableItems(
                 flex: 1, widget: const TEXT(text: 'aaaa', size: 17)),
             CustomBodyTableItems(
+                flex: 1, widget: const TEXT(text: 'aaaa', size: 17)),
+            CustomBodyTableItems(
               flex: 1,
               widget: CustomPop(
                 items: [

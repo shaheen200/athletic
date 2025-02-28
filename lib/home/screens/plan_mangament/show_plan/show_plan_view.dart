@@ -62,12 +62,12 @@ class _ShowPlanViewState extends State<ShowPlanView> {
                   },
                 ),
                 CustomPopItems(
-                  text: getText('delete'),
+                  text: getText('stop'),
                   onTap: () {
                     msgDialog(
                         context1: context,
                         state: 0,
-                        text: getText('delete_msg'),
+                        text: getText('stop_msg'),
                         onClick: () {
                           widget.controller.delete(index);
                         });

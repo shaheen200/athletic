@@ -22,7 +22,7 @@ class ShowEmpolyee extends StatelessWidget {
           child: Align(
             alignment: Alignment.topRight,
             child: TEXT(
-              text: getText('Active Coaches'),
+              text: getText('show_emp'),
               size: 32,
               bold: true,
               color: Theme.of(context).primaryColor,
@@ -37,19 +37,8 @@ class ShowEmpolyee extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: TEXT(
-                      text: getText('Manage Coaches'),
-                      size: 20,
-                      bold: true,
-                      color: Theme.of(context).hintColor,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.3,
                     child: Row(
@@ -81,6 +70,7 @@ class ShowEmpolyee extends StatelessWidget {
                     CustomHeadTableItems(flex: 1, text: getText('phone')),
                     CustomHeadTableItems(flex: 1, text: getText('Gender')),
                     CustomHeadTableItems(flex: 1, text: getText('Salary')),
+                    CustomHeadTableItems(flex: 1, text: getText('job')),
                     CustomHeadTableItems(flex: 1, text: getText('more')),
                   ]),
                   Expanded(child: ShowEmpolyeeView(controller: controller))

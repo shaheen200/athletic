@@ -49,6 +49,7 @@ msgDialog(
                     children: [
                       Expanded(
                         child: CustomBtn(
+                            textcolor: Colors.white,
                             btnColor: Colors.red,
                             w: 0.115,
                             onClick: () {
@@ -63,6 +64,7 @@ msgDialog(
                           visible: onClick == null ? false : true,
                           child: Expanded(
                             child: CustomBtn(
+                                textcolor: Colors.white,
                                 btnColor: Colors.green,
                                 onClick: onClick,
                                 w: 0.115,

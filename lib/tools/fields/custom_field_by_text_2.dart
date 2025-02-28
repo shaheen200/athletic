@@ -20,6 +20,7 @@ class CustomTextFieldByText2 extends StatefulWidget {
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
   final Color? color;
+  final Color? textWriteColor;
   const CustomTextFieldByText2(
       {super.key,
       this.controller,
@@ -34,7 +35,8 @@ class CustomTextFieldByText2 extends StatefulWidget {
       this.onFieldSubmitted,
       this.validator,
       this.color,
-      this.type = CustomTextFieldByTextType.text});
+      this.type = CustomTextFieldByTextType.text,
+      this.textWriteColor = Colors.white});
 
   @override
   State<CustomTextFieldByText2> createState() => _CustomTextFieldByText2State();
@@ -72,8 +74,12 @@ class _CustomTextFieldByText2State extends State<CustomTextFieldByText2> {
                   context: context,
                   firstDate: DateTime(2024),
                   lastDate: DateTime(2100));
+
               if (time != null) {
                 widget.onChanged!.call(time.toString().split(' ')[0]);
+                if (widget.controller != null) {
+                  widget.controller!.text = time.toString().split(' ')[0];
+                }
               }
             }
           },
@@ -85,7 +91,7 @@ class _CustomTextFieldByText2State extends State<CustomTextFieldByText2> {
             child: TextFormField(
               onFieldSubmitted: widget.onFieldSubmitted,
               obscureText: show,
-              style: const TextStyle(color: Colors.white,fontSize: 18),
+              style: TextStyle(color: widget.textWriteColor, fontSize: 18),
               maxLines: widget.maxLines,
               enabled: widget.type == CustomTextFieldByTextType.date
                   ? false
@@ -129,8 +135,10 @@ class _CustomTextFieldByText2State extends State<CustomTextFieldByText2> {
                         ),
                       )),
                   hintText: widget.hintText,
-                  
-                  hintStyle: TextStyle(color: Theme.of(context).primaryColorLight,fontSize: 18,),
+                  hintStyle: TextStyle(
+                    color: widget.textWriteColor!.withOpacity(0.5),
+                    fontSize: 18,
+                  ),
                   contentPadding: const EdgeInsets.only(left: 15, right: 30),
                   border: _border,
                   errorBorder: _border,

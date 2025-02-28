@@ -20,7 +20,7 @@ class _AddClientState extends State<AddClient> {
   TextEditingController data = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController phone = TextEditingController();
-  TextEditingController discound = TextEditingController();
+  TextEditingController countDay = TextEditingController();
   final CustomDropDownController controller = CustomDropDownController();
 
   void date(de) {}
@@ -64,6 +64,7 @@ class _AddClientState extends State<AddClient> {
                       children: [
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
                           labelText: getText('subscrip_name'),
                         )),
                         const SizedBox(
@@ -71,6 +72,7 @@ class _AddClientState extends State<AddClient> {
                         ),
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
                           type: CustomTextFieldByTextType.date,
                           icon: Icons.date_range_rounded,
                           onChanged: (p0) {},
@@ -86,7 +88,9 @@ class _AddClientState extends State<AddClient> {
                       children: [
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
                           labelText: getText('phone'),
+                          type: CustomTextFieldByTextType.number,
                           controller: phone,
                         )),
                         const SizedBox(
@@ -94,6 +98,7 @@ class _AddClientState extends State<AddClient> {
                         ),
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
                           labelText: getText('email'),
                           controller: email,
                         )),
@@ -118,6 +123,8 @@ class _AddClientState extends State<AddClient> {
                         Expanded(
                             flex: 1,
                             child: CustomTextFieldByText2(
+                              textWriteColor: Colors.black,
+                              type: CustomTextFieldByTextType.number,
                               labelText: getText('price'),
                               enable: false,
                             )),
@@ -127,8 +134,10 @@ class _AddClientState extends State<AddClient> {
                         Expanded(
                             flex: 1,
                             child: CustomTextFieldByText2(
-                              labelText: getText('discount'),
-                              controller: discound,
+                              textWriteColor: Colors.black,
+                              type: CustomTextFieldByTextType.number,
+                              labelText: getText('count_day'),
+                              controller: countDay,
                             )),
                       ],
                     ),
@@ -137,7 +146,11 @@ class _AddClientState extends State<AddClient> {
                     ),
                     Align(
                         alignment: Alignment.centerLeft,
-                        child: CustomBtn(onClick: () {}, text: 'تأكيد',textcolor: Theme.of(context).primaryColorLight,))
+                        child: CustomBtn(
+                          onClick: () {},
+                          text: 'تأكيد',
+                          textcolor: Theme.of(context).primaryColorLight,
+                        ))
                   ],
                 ),
               ),

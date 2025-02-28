@@ -64,6 +64,7 @@ class _AddGoodState extends State<AddGood> {
                       children: [
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
                           color: Colors.white,
                           controller: name,
                           labelText: getText('name'),
@@ -73,6 +74,8 @@ class _AddGoodState extends State<AddGood> {
                         ),
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
+                          type: CustomTextFieldByTextType.number,
                           color: Colors.white,
                           controller: price,
                           labelText: getText('price'),
@@ -82,6 +85,8 @@ class _AddGoodState extends State<AddGood> {
                         ),
                         Expanded(
                             child: CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
+                          type: CustomTextFieldByTextType.number,
                           color: Colors.white,
                           controller: count,
                           labelText: getText('count'),
