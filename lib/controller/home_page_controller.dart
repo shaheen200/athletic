@@ -45,7 +45,7 @@ class HomePageController extends ChangeNotifier {
         index: 5,
         icons: Icons.workspace_premium_outlined,
         title: getText('add_emp'),
-        widget: AddEmpolyee()),
+        widget: const AddEmpolyee()),
     HomeDrawerScreensModels(
         index: 6,
         icons: Icons.people_alt,

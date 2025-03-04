@@ -1,4 +1,7 @@
 import 'package:athletic/controller/application_controller.dart';
+import 'package:athletic/home/screens/equipmnt_mangament/dialog/edit_equepment_dialog.dart';
+import 'package:athletic/home/screens/equipmnt_mangament/dialog/fix_equiepment.dart';
+import 'package:athletic/home/screens/equipmnt_mangament/dialog/show_fix_equipment_dialog.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/Custom_Table.dart';
 import 'package:athletic/tools/customText.dart';
@@ -48,7 +51,9 @@ class _ShowEquipmentViewState extends State<ShowEquipmentView> {
           CustomBodyTableItems(
               flex: 2,
               widget: TEXT(
-                  text: widget.controller.items[index].state.toString(),
+                  text: widget.controller.items[index].state
+                      ? 'فعال'
+                      : 'غير فعال',
                   size: 17,
                   bold: true)),
           CustomBodyTableItems(
@@ -56,11 +61,28 @@ class _ShowEquipmentViewState extends State<ShowEquipmentView> {
               widget: CustomPop(items: [
                 CustomPopItems(
                   text: getText('edit'),
-                  onTap: () {},
+                  onTap: () {
+                    editEquipmentDialog(
+                        context: context,
+                        controller: widget.controller,
+                        index: index);
+                  },
                 ),
                 CustomPopItems(
                   text: getText('fix'),
-                  onTap: () {},
+                  onTap: () {
+                    fixEquipmentDialog(
+                        context: context,
+                        id: widget.controller.items[index].id);
+                  },
+                ),
+                CustomPopItems(
+                  text: getText('show_fix'),
+                  onTap: () {
+                    showfixEquipmentDialog(
+                        context: context,
+                        id: widget.controller.items[index].id);
+                  },
                 ),
               ]))
         ]);

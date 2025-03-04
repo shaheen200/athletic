@@ -2,7 +2,7 @@ class EquepmentModels {
   final int id;
   final String name;
   final bool state;
-  final double price;
+  final String price;
 
   EquepmentModels(
       {required this.id,
@@ -13,22 +13,22 @@ class EquepmentModels {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'name': name,
-      'state': state,
-      'price': price,
+      'equipmentName': name,
+      'isAvailable': state,
+      'description': price,
     };
   }
 
   factory EquepmentModels.fromMap(Map<String, dynamic> map) {
     return EquepmentModels(
       id: map['id'],
-      name: map['name'],
-      state: map['state'],
-      price: map['price'],
+      name: map['equipmentName'].toString(),
+      state: map['isAvailable'],
+      price: map['description'].toString(),
     );
   }
 
-  static List<EquepmentModels> fromListMap(List<Map<String, dynamic>> list) {
+  static List<EquepmentModels> fromListMap(List<dynamic> list) {
     return list.map((map) => EquepmentModels.fromMap(map)).toList();
   }
 }

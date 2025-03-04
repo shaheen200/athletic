@@ -1,4 +1,6 @@
+import 'package:athletic/database/local_base.dart';
 import 'package:athletic/home/drawer_tile.dart';
+import 'package:athletic/models/user_model.dart';
 import 'package:athletic/tools/customText.dart';
 import 'package:flutter/material.dart';
 
@@ -13,11 +15,19 @@ class DrawerHomePage extends StatefulWidget {
 }
 
 class _DrawerHomePageState extends State<DrawerHomePage> {
+  UserModel? userData;
   @override
   void initState() {
     widget.controller.addListener(() {
       setState(() {});
     });
+    LocalBase.getUserData().then(
+      (value) {
+        setState(() {
+          userData = value;
+        });
+      },
+    );
     super.initState();
   }
 
@@ -34,14 +44,16 @@ class _DrawerHomePageState extends State<DrawerHomePage> {
           children: [
             const Icon(Icons.person_pin, color: Colors.white, size: 100),
             const SizedBox(height: 10),
-            const TEXT(
-                text: 'Administrator Name',
+            TEXT(
+                text: userData == null ? '' : userData!.userName,
                 size: 20,
                 bold: true,
                 color: Colors.white),
             const SizedBox(height: 10),
-            const TEXT(
-                text: 'ATHLETIC.FIT@gmail.com', size: 17, color: Colors.white),
+            TEXT(
+                text: userData == null ? '' : userData!.email,
+                size: 17,
+                color: Colors.white),
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Expanded(
               child: ListView.builder(

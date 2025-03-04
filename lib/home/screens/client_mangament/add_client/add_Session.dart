@@ -18,7 +18,6 @@ class AddSession extends StatefulWidget {
 class _AddSessionState extends State<AddSession> {
   TextEditingController price = TextEditingController();
   TextEditingController name = TextEditingController();
-  TextEditingController total = TextEditingController();
   final CustomDropDownController controller = CustomDropDownController();
 
   void date(de) {}
@@ -54,58 +53,35 @@ class _AddSessionState extends State<AddSession> {
               ),
               const SizedBox(height: 10),
               CustomContainer(
-                width: .5,
+                width: .4,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: CustomDropDown(
-                            controller: controller,
-                            labelText: getText('plan'),
-                            onChanged: (p0) {},
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Expanded(
-                            child: CustomTextFieldByText2(
-                          textWriteColor: Colors.black,
-                          type: CustomTextFieldByTextType.number,
-                          icon: Icons.date_range_rounded,
-                          onChanged: (p0) {},
-                          enable: false,
-                          controller: price,
-                          labelText: getText('price'),
-                        ))
-                      ],
+                    CustomDropDown(
+                      controller: controller,
+                      labelText: getText('plan'),
+                      onChanged: (p0) {},
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    CustomTextFieldByText2(
+                      textWriteColor: Colors.black,
+                      type: CustomTextFieldByTextType.number,
+                      icon: Icons.date_range_rounded,
+                      onChanged: (p0) {},
+                      enable: false,
+                      controller: price,
+                      labelText: getText('price'),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                            flex: 1,
-                            child: CustomTextFieldByText2(
-                              textWriteColor: Colors.black,
-                              type: CustomTextFieldByTextType.text,
-                              controller: name,
-                              labelText: getText('name'),
-                            )),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                            flex: 1,
-                            child: CustomTextFieldByText2(
-                              labelText: getText('total'),
-                              controller: total,
-                            )),
-                      ],
+                    CustomTextFieldByText2(
+                      textWriteColor: Colors.black,
+                      type: CustomTextFieldByTextType.text,
+                      controller: name,
+                      labelText: getText('name'),
                     ),
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,

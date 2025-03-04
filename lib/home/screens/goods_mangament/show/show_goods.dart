@@ -2,13 +2,14 @@
 
 import 'package:athletic/controller/application_controller.dart';
 import 'package:athletic/home/screens/goods_mangament/show/show_goods_view.dart';
+import 'package:athletic/models/good_model.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/Custom_Table.dart';
 import 'package:athletic/tools/container/custom_container.dart';
 import 'package:flutter/material.dart';
 
 class ShowGoods extends StatefulWidget {
-  final ApplicationController controller;
+  final ApplicationController<GoodModel> controller;
   const ShowGoods({super.key, required this.controller});
 
   @override

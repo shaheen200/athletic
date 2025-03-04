@@ -2,14 +2,14 @@
 
 import 'package:athletic/controller/application_controller.dart';
 import 'package:athletic/home/screens/plan_mangament/show_plan/show_plan_view.dart';
-import 'package:athletic/models/plan_models.dart';
+import 'package:athletic/models/plan_model.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/Custom_Table.dart';
 import 'package:athletic/tools/container/custom_container.dart';
 import 'package:flutter/material.dart';
 
 class ShowPlan extends StatefulWidget {
-  final ApplicationController<PlanModels> controller;
+  final ApplicationController<PlanModel> controller;
   const ShowPlan({super.key, required this.controller});
 
   @override

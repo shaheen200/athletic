@@ -1,7 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:athletic/database/api_data.dart';
+import 'package:athletic/database/login_base.dart';
 import 'package:athletic/home/home_page.dart';
 import 'package:athletic/tools/customText.dart';
 import 'package:athletic/tools/funTool.dart';
+import 'package:athletic/tools/msg_dialog.dart';
+import 'package:athletic/tools/waiting.dart';
 import 'package:flutter/material.dart';
 import '../provider/language/get_text.dart';
 import '../tools/custom_btn/customBtn.dart';
@@ -16,9 +20,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController phone = TextEditingController();
+  final TextEditingController email = TextEditingController();
   final TextEditingController pw = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    email.text = "mohamedbedosalah2003@gmail.com";
+    pw.text = "Pa\$\$w0rd123!";
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +53,8 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: MediaQuery.of(context).size.height * 0.06),
                   CustomTextFieldByText(
                       labelText: getText("email"),
-                      icon: Icons.phone,
-                      controller: phone,
+                      icon: Icons.email,
+                      controller: email,
                       validator: (p0) {
                         if (p0 == null) {
                           return getText("field_empty");
@@ -68,15 +79,26 @@ class _LoginPageState extends State<LoginPage> {
                       }),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.06),
                   CustomBtn(
-                      height: 55,
-                      raduis: 10,
-                      w: 1,
-                      onClick: () async {
-                        goPage(context, const HomePage());
-                        // if (formKey.currentState!.validate()) {}
-                      },
-                      text: getText("login"),textcolor: Theme.of(context).primaryColorLight,),
-                      
+                    height: 55,
+                    raduis: 10,
+                    w: 1,
+                    onClick: () async {
+                      if (formKey.currentState!.validate()) {
+                        waiting(context: context);
+                        ApiData login = await LoginBase.login(
+                            email: email.text, pw: pw.text);
+                        pOP(context);
+                        if (login.success) {
+                          goToPage(context, const HomePage());
+                        } else {
+                          msgDialog(
+                              context1: context, state: -1, text: login.msg);
+                        }
+                      }
+                    },
+                    text: getText("login"),
+                    textcolor: Theme.of(context).primaryColorLight,
+                  ),
                 ],
               ),
             ),

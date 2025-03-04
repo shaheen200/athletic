@@ -1,15 +1,14 @@
 import 'package:athletic/controller/application_controller.dart';
 import 'package:athletic/home/screens/plan_mangament/dialog/edit_plan_dialog.dart';
-import 'package:athletic/models/plan_models.dart';
+import 'package:athletic/models/plan_model.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/Custom_Table.dart';
 import 'package:athletic/tools/customText.dart';
-import 'package:athletic/tools/msg_dialog.dart';
 import 'package:athletic/tools/pop_menu/custom_pop.dart';
 import 'package:flutter/material.dart';
 
 class ShowPlanView extends StatefulWidget {
-  final ApplicationController<PlanModels> controller;
+  final ApplicationController<PlanModel> controller;
   const ShowPlanView({super.key, required this.controller});
 
   @override
@@ -37,7 +36,7 @@ class _ShowPlanViewState extends State<ShowPlanView> {
           CustomBodyTableItems(
               flex: 3,
               widget: TEXT(
-                  text: widget.controller.items[index].name,
+                  text: widget.controller.items[index].planName,
                   size: 17,
                   bold: true)),
           CustomBodyTableItems(
@@ -49,7 +48,7 @@ class _ShowPlanViewState extends State<ShowPlanView> {
           CustomBodyTableItems(
               flex: 2,
               widget: TEXT(
-                  text: widget.controller.items[index].countDay.toString(),
+                  text: widget.controller.items[index].durationDays.toString(),
                   size: 17,
                   bold: true)),
           CustomBodyTableItems(
@@ -61,18 +60,18 @@ class _ShowPlanViewState extends State<ShowPlanView> {
                     editPlanDialog(context, widget.controller, index);
                   },
                 ),
-                CustomPopItems(
-                  text: getText('stop'),
-                  onTap: () {
-                    msgDialog(
-                        context1: context,
-                        state: 0,
-                        text: getText('stop_msg'),
-                        onClick: () {
-                          widget.controller.delete(index);
-                        });
-                  },
-                )
+                // CustomPopItems(
+                //   text: getText('stop'),
+                //   onTap: () {
+                //     msgDialog(
+                //         context1: context,
+                //         state: 0,
+                //         text: getText('stop_msg'),
+                //         onClick: () {
+                //           widget.controller.delete(index);
+                //         });
+                //   },
+                // )
               ]))
         ]);
       },
