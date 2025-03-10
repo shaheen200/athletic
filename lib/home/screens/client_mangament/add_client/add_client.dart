@@ -1,5 +1,5 @@
 import 'package:athletic/database/api_data.dart';
-import 'package:athletic/database/client_base.dart';
+import 'package:athletic/database/member_base.dart';
 import 'package:athletic/database/plan_base.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/container/custom_container.dart';
@@ -22,18 +22,18 @@ class AddClient extends StatefulWidget {
 
 class _AddClientState extends State<AddClient> {
   TextEditingController name = TextEditingController();
-  TextEditingController data = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController price = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController countDay = TextEditingController();
-  final CustomDropDownController controller = CustomDropDownController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final CustomDropDownController controller = CustomDropDownController();
     return FutureBuilder(
-      future: PlanBase.getAllPlans(),
+      future: PlanBase.getPlanType(day: false),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -84,6 +84,7 @@ class _AddClientState extends State<AddClient> {
                               children: [
                                 Expanded(
                                     child: CustomTextFieldByText2(
+                                  controller: name,
                                   textWriteColor: Colors.black,
                                   labelText: getText('subscrip_name'),
                                   validator: (p0) {
@@ -94,17 +95,16 @@ class _AddClientState extends State<AddClient> {
                                   width: 5,
                                 ),
                                 Expanded(
-                                    child: CustomTextFieldByText2(
-                                  textWriteColor: Colors.black,
-                                  type: CustomTextFieldByTextType.date,
-                                  icon: Icons.date_range_rounded,
-                                  onChanged: (p0) {},
-                                  controller: data,
-                                  labelText: getText('enter_date'),
-                                  validator: (p0) {
-                                    return val(p0);
-                                  },
-                                ))
+                                  flex: 1,
+                                  child: CustomDropDown(
+                                    controller: controller,
+                                    labelText: getText('plan'),
+                                    validator: (p0) {
+                                      return val(p0);
+                                    },
+                                    onChanged: (p0) {},
+                                  ),
+                                ),
                               ],
                             ),
                             SizedBox(
@@ -141,20 +141,6 @@ class _AddClientState extends State<AddClient> {
                             ),
                             Row(
                               children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: CustomDropDown(
-                                    controller: controller,
-                                    labelText: getText('plan'),
-                                    validator: (p0) {
-                                      return val(p0);
-                                    },
-                                    onChanged: (p0) {},
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
                                 Expanded(
                                     flex: 1,
                                     child: CustomTextFieldByText2(
@@ -199,9 +185,24 @@ class _AddClientState extends State<AddClient> {
                                         onClick: () async {
                                           pOP(context);
                                           waiting(context: context);
-                                          // ApiData add =
-                                          // await ClientBase.addMemberShip();
+                                          ApiData add = await MemberBase.add(
+                                              email: email.text,
+                                              phone: phone.text,
+                                              name: name.text,
+                                              planId: controller.value!);
                                           pOP(context);
+                                          await msgDialog(
+                                              context1: context,
+                                              state: add.success ? 1 : -1,
+                                              text: add.msg);
+                                          if (add.success) {
+                                            price.clear();
+                                            name.clear();
+                                            countDay.clear();
+                                            controller.clear();
+                                            phone.clear();
+                                            email.clear();
+                                          }
                                         },
                                       );
                                     }

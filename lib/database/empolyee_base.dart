@@ -42,7 +42,6 @@ class EmpolyeeBase {
         }),
       );
       final data = jsonDecode(response.body);
-      print(data);
       return ApiData(
           success: data['statusCode'] == 201, msg: data['message'], data: []);
     } catch (e) {

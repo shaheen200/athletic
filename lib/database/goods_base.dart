@@ -117,7 +117,7 @@ class GoodsBase {
             data: list
                 .map(
                   (e) => GoodModel(
-                      id: 1,
+                      id: e['id'],
                       name: e['name'],
                       price: e['price'],
                       count: e['count'],

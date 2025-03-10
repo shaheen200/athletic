@@ -35,39 +35,48 @@ class HomePageController extends ChangeNotifier {
         index: 3,
         icons: Icons.people_outline,
         title: getText('show_client'),
-        widget: const ShowMember()),
+        widget: const ShowMember(
+          state: ShowMemeberState.active,
+        )),
     HomeDrawerScreensModels(
         index: 4,
+        icons: Icons.people_outline,
+        title: getText('renew'),
+        widget: const ShowMember(
+          state: ShowMemeberState.notActive,
+        )),
+    HomeDrawerScreensModels(
+        index: 5,
         icons: Icons.add,
         title: getText('add_day'),
         widget: const AddSession()),
     HomeDrawerScreensModels(
-        index: 5,
+        index: 6,
         icons: Icons.workspace_premium_outlined,
         title: getText('add_emp'),
         widget: const AddEmpolyee()),
     HomeDrawerScreensModels(
-        index: 6,
+        index: 7,
         icons: Icons.people_alt,
         title: getText('show_emp'),
         widget: const ShowEmpolyee()),
     HomeDrawerScreensModels(
-        index: 7,
+        index: 8,
         icons: Icons.visibility_outlined,
         title: getText('equepment'),
         widget: const EquipmenScreen()),
     HomeDrawerScreensModels(
-        index: 8,
+        index: 9,
         icons: Icons.food_bank_sharp,
         title: getText('goods'),
         widget: const GoodsScreen()),
     HomeDrawerScreensModels(
-        index: 9,
+        index: 10,
         icons: Icons.store,
         title: getText('store'),
         widget: const StorePage()),
     HomeDrawerScreensModels(
-        index: 10,
+        index: 11,
         icons: Icons.person,
         title: getText('me'),
         widget: const MyInfoScreen()),
