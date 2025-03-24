@@ -23,7 +23,12 @@ class GoodsScreen extends StatelessWidget {
         }
         if (!snapshot.data!.success) {
           return Center(
-            child: TEXT(text: snapshot.data!.msg, size: 18, bold: true),
+            child: TEXT(
+              text: snapshot.data!.msg,
+              size: 18,
+              bold: true,
+              color: Colors.white,
+            ),
           );
         } else {
           controller.equal(snapshot.data!.data);

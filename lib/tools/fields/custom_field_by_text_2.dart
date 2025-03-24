@@ -9,6 +9,7 @@ enum CustomTextFieldByTextType { date, text, number }
 class CustomTextFieldByText2 extends StatefulWidget {
   final TextEditingController? controller;
   final String? labelText;
+  final Color? labelcolor;
   final String? hintText;
   final String? Function(String?)? validator;
   final IconData? icon;
@@ -20,11 +21,13 @@ class CustomTextFieldByText2 extends StatefulWidget {
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
   final Color? color;
+  final Color? colorBorder;
   final Color? textWriteColor;
   const CustomTextFieldByText2(
       {super.key,
       this.controller,
       this.maxLines = 1,
+      this.labelcolor,
       this.onChanged,
       this.enable = true,
       this.pw = false,
@@ -35,6 +38,7 @@ class CustomTextFieldByText2 extends StatefulWidget {
       this.onFieldSubmitted,
       this.validator,
       this.color,
+      this.colorBorder,
       this.type = CustomTextFieldByTextType.text,
       this.textWriteColor = Colors.white});
 
@@ -61,7 +65,7 @@ class _CustomTextFieldByText2State extends State<CustomTextFieldByText2> {
               text: " ${widget.labelText} ",
               size: 20,
               bold: true,
-              color: widget.color ?? Colors.black),
+              color: widget.labelcolor ?? Colors.black),
         ),
         Visibility(
           visible: widget.labelText == null ? false : true,
@@ -86,6 +90,8 @@ class _CustomTextFieldByText2State extends State<CustomTextFieldByText2> {
           child: Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
+                border: Border.all(
+                    width: 4, color: widget.colorBorder ?? Colors.transparent),
                 borderRadius: BorderRadius.circular(10),
                 color: widget.color ?? Colors.black12),
             child: TextFormField(

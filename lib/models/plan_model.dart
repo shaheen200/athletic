@@ -13,10 +13,10 @@ class PlanModel {
 
   factory PlanModel.fromMap(Map<String, dynamic> map) {
     return PlanModel(
-        id: map['id'] ?? 0,
-        planName: map['planName'] ?? '',
-        durationDays: map['durationDays'] ?? 0,
-        price: double.parse(map['price'].toString()));
+        id: map['Id'] ?? 0,
+        planName: map['Name'] ?? '',
+        durationDays: map['DurationInDays'] ?? 0,
+        price: double.parse(map['Price'].toString()));
   }
 
   Map<String, dynamic> toMap() {

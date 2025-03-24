@@ -35,7 +35,6 @@ void editPlanDialog(BuildContext context,
             },
           ),
           CustomTextFieldByText(
-            numberOnly: true,
             controller: price,
             labelText: getText('price'),
             validator: (p0) {
@@ -43,7 +42,6 @@ void editPlanDialog(BuildContext context,
             },
           ),
           CustomTextFieldByText(
-            numberOnly: true,
             controller: countDay,
             labelText: getText('count_day'),
             validator: (p0) {

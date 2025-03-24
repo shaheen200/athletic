@@ -30,17 +30,17 @@ class DrawerTile extends StatelessWidget {
             Icon(select.widgets[index].icons,
                 color: select.currentSelect.index == index
                     ? Theme.of(context).primaryColor
-                    : Colors.white,
+                    : Colors.black,
                 size: 25),
             const SizedBox(width: 5),
             Expanded(
                 child: TEXT(
                     text: select.widgets[index].title,
-                    size: 18,
+                    size: select.currentSelect.index == index ? 16 : 18,
                     bold: select.currentSelect.index == index,
                     color: select.currentSelect.index == index
                         ? Theme.of(context).primaryColor
-                        : Colors.white))
+                        : Colors.black))
           ],
         ),
       ),

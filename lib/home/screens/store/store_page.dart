@@ -39,7 +39,12 @@ class _StorePageState extends State<StorePage> {
         }
         if (!snapshot.data!.success) {
           return Center(
-            child: TEXT(text: snapshot.data!.msg, size: 18, bold: true),
+            child: TEXT(
+              text: snapshot.data!.msg,
+              size: 18,
+              bold: true,
+              color: Colors.white,
+            ),
           );
         } else {
           goods.equal(snapshot.data!.data.map((e) {
@@ -61,77 +66,107 @@ class _StorePageState extends State<StorePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    TEXT(
+                      color: Theme.of(context).primaryColor,
+                      text: getText('store'),
+                      size: 28,
+                      bold: true,
+                    ),
+                    const SizedBox(height: 10),
                     Form(
                       key: formKey,
                       child: CustomContainer(
-                        width: .4,
+                        width: .5,
+                        color: const Color(0xffEFCF8B),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            CustomDropDown(
-                              controller: goods,
-                              labelText: getText('goods'),
-                              validator: (p0) {
-                                return val(p0);
-                              },
-                              onChanged: (p0) {},
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomDropDown(
+                                    controller: goods,
+                                    labelText: getText('goods'),
+                                    validator: (p0) {
+                                      return val(p0);
+                                    },
+                                    onChanged: (p0) {},
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: CustomTextFieldByText2(
+                                    type: CustomTextFieldByTextType.number,
+                                    controller: count,
+                                    enable: false,
+                                    color: Colors.white,
+                                    textWriteColor: Colors.black,
+                                    labelText: getText('stored'),
+                                    validator: (p0) {
+                                      return val(p0);
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: CustomTextFieldByText2(
+                                    type: CustomTextFieldByTextType.number,
+                                    color: Colors.white,
+                                    textWriteColor: Colors.black,
+                                    controller: price,
+                                    labelText: getText('price_good'),
+                                    validator: (p0) {
+                                      return val(p0);
+                                    },
+                                    enable: false,
+                                  ),
+                                ),
+                              ],
                             ),
                             const SizedBox(height: 10),
-                            CustomTextFieldByText2(
-                              textWriteColor: Colors.black,
-                              type: CustomTextFieldByTextType.number,
-                              controller: count,
-                              enable: false,
-                              labelText: getText('count'),
-                              validator: (p0) {
-                                return val(p0);
-                              },
-                            ),
-                            const SizedBox(height: 10),
-                            CustomTextFieldByText2(
-                              textWriteColor: Colors.black,
-                              type: CustomTextFieldByTextType.number,
-                              controller: price,
-                              labelText: getText('price'),
-                              validator: (p0) {
-                                return val(p0);
-                              },
-                              enable: false,
-                            ),
-                            const SizedBox(height: 10),
-                            CustomTextFieldByText2(
-                              textWriteColor: Colors.black,
-                              type: CustomTextFieldByTextType.number,
-                              controller: need,
-                              labelText: getText('need'),
-                              onChanged: (p0) {},
-                              validator: (p0) {
-                                return val(p0);
-                              },
-                              onFieldSubmitted: (p0) {
-                                if (double.parse(p0) <=
-                                    double.parse(count.text)) {
-                                  total.text = (double.parse(p0) *
-                                          double.parse(price.text))
-                                      .toStringAsFixed(1);
-                                } else {
-                                  msgDialog(
-                                      context1: context,
-                                      state: -1,
-                                      text: 'الكمية المطلوبة كبيرة');
-                                }
-                              },
-                            ),
-                            const SizedBox(height: 10),
-                            CustomTextFieldByText2(
-                              textWriteColor: Colors.black,
-                              type: CustomTextFieldByTextType.number,
-                              controller: total,
-                              labelText: getText('total'),
-                              validator: (p0) {
-                                return val(p0);
-                              },
-                              enable: false,
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextFieldByText2(
+                                    type: CustomTextFieldByTextType.number,
+                                    color: Colors.white,
+                                    textWriteColor: Colors.black,
+                                    controller: need,
+                                    labelText: getText('count'),
+                                    onChanged: (p0) {},
+                                    validator: (p0) {
+                                      return val(p0);
+                                    },
+                                    onFieldSubmitted: (p0) {
+                                      if (double.parse(p0) <=
+                                          double.parse(count.text)) {
+                                        total.text = (double.parse(p0) *
+                                                double.parse(price.text))
+                                            .toStringAsFixed(1);
+                                      } else {
+                                        msgDialog(
+                                            context1: context,
+                                            state: -1,
+                                            text: 'الكمية المطلوبة كبيرة');
+                                      }
+                                    },
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                  child: CustomTextFieldByText2(
+                                    type: CustomTextFieldByTextType.number,
+                                    controller: total,
+                                    labelText: getText('total'),
+                                    color: Colors.white,
+                                    textWriteColor: Colors.black,
+                                    validator: (p0) {
+                                      return val(p0);
+                                    },
+                                    enable: false,
+                                  ),
+                                ),
+                              ],
                             ),
                             SizedBox(
                               height: MediaQuery.of(context).size.height * 0.03,
@@ -167,7 +202,7 @@ class _StorePageState extends State<StorePage> {
                                 }
                               },
                               text: 'تأكيد',
-                              textcolor: Theme.of(context).primaryColorLight,
+                              textcolor: Theme.of(context).primaryColorDark,
                             )
                           ],
                         ),

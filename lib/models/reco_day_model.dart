@@ -12,9 +12,9 @@ class RecoDayModel {
   // Factory method to create a RecoDayModel instance from a map
   factory RecoDayModel.fromMap(Map<String, dynamic> map) {
     return RecoDayModel(
-      id: map['id'] as int,
-      userCode: map['userCode'].toString(),
-      attendanceDate: map['attendanceDate'].toString(),
+      id: map['Id'] as int,
+      userCode: map['UserCode'].toString(),
+      attendanceDate: map['AttendanceDate'].toString(),
     );
   }
 

@@ -21,8 +21,9 @@ class _ShowGoodsState extends State<ShowGoods> {
   Widget build(BuildContext context) {
     return CustomContainer(
       width: 1,
+      margin: 20,
       pading: 20,
-      color: Theme.of(context).primaryColor.withOpacity(0.5),
+      color: const Color(0xffEFCF8B),
       child: Column(
         children: [
           CustomHeadTable(headData: [

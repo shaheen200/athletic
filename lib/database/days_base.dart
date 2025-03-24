@@ -31,9 +31,9 @@ class DaysBase {
       );
       final data = jsonDecode(response.body);
       if (response.statusCode == 201) {
-        return ApiData(success: true, msg: data['message'], data: null);
+        return ApiData(success: true, msg: data['Message'], data: null);
       } else {
-        return ApiData(success: false, msg: data['message'], data: null);
+        return ApiData(success: false, msg: data['Message'], data: null);
       }
     } catch (e) {
       return ApiData(success: false, msg: "Error: $e", data: null);

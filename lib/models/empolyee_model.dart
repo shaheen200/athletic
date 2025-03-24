@@ -19,26 +19,14 @@ class EmployeeModel {
 
   factory EmployeeModel.fromJson(Map<String, dynamic> json) {
     return EmployeeModel(
-      id: json['id'],
-      displayName: json['displayName'],
-      email: json['email'],
-      passWord: json['passWord'],
-      userRole: json['userRole'],
-      gender: json['gender'],
-      salary: json['salary'],
+      id: json['Id'],
+      displayName: json['DisplayName'] ?? '',
+      email: json['Email'] ?? '',
+      passWord: json['PassWord'] ?? '',
+      userRole: json['UserRole'],
+      gender: json['Gender'] ?? '',
+      salary: json['Salary'] ?? 0.0,
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'displayName': displayName,
-      'email': email,
-      'passWord': passWord,
-      'userRole': userRole,
-      'gender': gender,
-      'salary': salary,
-    };
   }
 
   static List<EmployeeModel> convertListToEmployeeModel(List<dynamic> list) {

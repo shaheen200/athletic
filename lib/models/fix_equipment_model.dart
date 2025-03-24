@@ -12,19 +12,10 @@ class FixEquipmentModel {
 
   factory FixEquipmentModel.fromJson(Map<String, dynamic> json) {
     return FixEquipmentModel(
-        equipmentId: json['equipmentId'],
-        description: json['description'],
-        cost: json['cost'],
-        time: json['time'] ?? '');
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'equipmentId': equipmentId,
-      'description': description,
-      'cost': cost,
-      'time': time
-    };
+        equipmentId: json['EquipmentId'],
+        description: json['Description'],
+        cost: json['Cost'],
+        time: json['Time'] ?? '');
   }
 
   static List<FixEquipmentModel> convertListToModel(List<dynamic> list) {

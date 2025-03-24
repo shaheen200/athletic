@@ -71,9 +71,6 @@ class _ShowEmpolyeeViewState extends State<ShowEmpolyeeView> {
                     },
                   ),
                   CustomPopItems(
-                    text: getText('stop'),
-                  ),
-                  CustomPopItems(
                     text: getText('Actions'),
                   ),
                 ],

@@ -23,7 +23,7 @@ class _ShowEquipmentState extends State<ShowEquipment> {
     return CustomContainer(
       width: 1,
       pading: 20,
-      color: Theme.of(context).primaryColor.withOpacity(0.5),
+      color: const Color(0xffEFCF8B),
       child: Column(
         children: [
           CustomHeadTable(headData: [

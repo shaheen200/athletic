@@ -41,6 +41,7 @@ editGoodDialog(
             textWriteColor: Colors.black,
             controller: name,
             labelText: getText('name'),
+            color: Colors.white,
             validator: (p0) {
               return val(p0);
             },
@@ -53,6 +54,7 @@ editGoodDialog(
             type: CustomTextFieldByTextType.number,
             controller: price,
             labelText: getText('price'),
+            color: Colors.white,
             validator: (p0) {
               return val(p0);
             },
@@ -63,6 +65,7 @@ editGoodDialog(
           CustomTextFieldByText2(
             textWriteColor: Colors.black,
             type: CustomTextFieldByTextType.number,
+            color: Colors.white,
             controller: count,
             labelText: getText('count'),
             validator: (p0) {

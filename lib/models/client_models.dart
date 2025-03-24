@@ -24,16 +24,16 @@ class ClientModels {
 
   factory ClientModels.fromMap(Map<String, dynamic> map) {
     return ClientModels(
-        id: map['id'],
-        userId: map['userId'],
-        userName: map['userName'],
-        userEmail: map['userEmail'],
-        phoneNumber: map['phoneNumber'],
-        plan: Plan.fromMap(map['plan']),
-        startDate: "${map['startDate']}".split('T')[0],
-        endDate: "${map['endDate']}".split('T')[0],
-        isActive: map['isActive'],
-        userCode: map['userCode'] ?? '');
+        id: map['Id'],
+        userId: map['UserId'],
+        userName: map['UserName'],
+        userEmail: map['UserEmail'],
+        phoneNumber: map['PhoneNumber'],
+        plan: Plan.fromMap(map['Plan']),
+        startDate: "${map['StartDate']}".split('T')[0],
+        endDate: "${map['EndDate']}".split('T')[0],
+        isActive: map['IsActive'],
+        userCode: map['UserCode'] ?? '');
   }
   static List<ClientModels> convertToModelList(List<dynamic> maps) {
     return maps.map((map) => ClientModels.fromMap(map)).toList();
@@ -55,10 +55,10 @@ class Plan {
 
   factory Plan.fromMap(Map<String, dynamic> map) {
     return Plan(
-      planName: map['planName'],
-      durationDays: map['durationDays'],
-      price: map['price'],
-      id: map['id'],
+      planName: map['PlanName'],
+      durationDays: map['DurationDays'],
+      price: map['Price'],
+      id: map['Id'],
     );
   }
 }

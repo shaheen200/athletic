@@ -35,16 +35,16 @@ class GoodsBase {
       if (response.statusCode == 201) {
         return ApiData<GoodModel?>(
             success: true,
-            msg: data['message'],
+            msg: data['Message'],
             data: GoodModel(
-                id: data['data']['id'],
+                id: data['Data']['Id'],
                 name: name,
                 price: price,
                 count: count,
                 isActive: isActive));
       } else {
         return ApiData<GoodModel?>(
-            success: false, msg: data['message'], data: null);
+            success: false, msg: data['Message'], data: null);
       }
     } catch (e) {
       return ApiData<GoodModel?>(success: false, msg: "Error: $e", data: null);
@@ -82,11 +82,11 @@ class GoodsBase {
       if (response.statusCode == 200) {
         return ApiData<GoodModel?>(
             success: true,
-            msg: data['message'],
-            data: GoodModel.fromJson(data['data']));
+            msg: data['Message'],
+            data: GoodModel.fromJson(data['Data']));
       } else {
         return ApiData<GoodModel?>(
-            success: false, msg: data['message'], data: null);
+            success: false, msg: data['Message'], data: null);
       }
     } catch (e) {
       return ApiData<GoodModel?>(success: false, msg: "Error: $e", data: null);
@@ -110,23 +110,23 @@ class GoodsBase {
       );
       final products = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        final list = products['data'] as List;
+        final list = products['Data'] as List;
         return ApiData<List<GoodModel>>(
             success: true,
-            msg: products['message'],
+            msg: products['Message'],
             data: list
                 .map(
                   (e) => GoodModel(
-                      id: e['id'],
-                      name: e['name'],
-                      price: e['price'],
-                      count: e['count'],
-                      isActive: e['isAvailable']),
+                      id: e['Id'],
+                      name: e['Name'],
+                      price: e['Price'],
+                      count: e['Count'],
+                      isActive: e['IsAvailable']),
                 )
                 .toList());
       } else {
         return ApiData<List<GoodModel>>(
-            success: true, msg: products['message'], data: []);
+            success: true, msg: products['Message'], data: []);
       }
     } catch (e) {
       return ApiData<List<GoodModel>>(success: true, msg: '$e', data: []);

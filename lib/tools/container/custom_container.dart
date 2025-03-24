@@ -34,7 +34,7 @@ class CustomContainer extends StatelessWidget {
             ? null
             : (MediaQuery.of(context).size.height * height!),
         decoration: BoxDecoration(
-            color: color ?? Theme.of(context).scaffoldBackgroundColor,
+            color: color ?? const Color(0xffF4DCAC),
             borderRadius: BorderRadius.circular(raduis),
             boxShadow: [
               BoxShadow(

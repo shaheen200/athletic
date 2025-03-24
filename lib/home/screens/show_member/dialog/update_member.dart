@@ -71,6 +71,7 @@ editMemeberDays(BuildContext context,
         if (formKey.currentState!.validate()) {
           waiting(context: context);
           ApiData add = await MemberBase.update(
+            id: controller.items[index].id,
             email: email.text,
             phone: phone.text,
             name: name.text,

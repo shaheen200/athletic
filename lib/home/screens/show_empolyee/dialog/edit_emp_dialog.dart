@@ -46,7 +46,12 @@ editEmpDialog(
         }
         if (!snapshot.data!.success) {
           return Center(
-            child: TEXT(text: snapshot.data!.msg, size: 18, bold: true),
+            child: TEXT(
+              text: snapshot.data!.msg,
+              size: 18,
+              bold: true,
+              color: Colors.white,
+            ),
           );
         } else {
           job.equal(snapshot.data!.data.map(
@@ -69,6 +74,7 @@ editEmpDialog(
                         onChanged: (p0) {},
                         controller: email,
                         labelText: getText('email'),
+                        color: Colors.white,
                         validator: (p0) {
                           return val(p0);
                         },
@@ -80,6 +86,7 @@ editEmpDialog(
                         textWriteColor: Colors.black,
                         onChanged: (p0) {},
                         controller: name,
+                        color: Colors.white,
                         labelText: getText('name'),
                         validator: (p0) {
                           return val(p0);
@@ -121,6 +128,7 @@ editEmpDialog(
                   textWriteColor: Colors.black,
                   type: CustomTextFieldByTextType.number,
                   labelText: getText('Salary'),
+                  color: Colors.white,
                   controller: salary,
                   validator: (p0) {
                     return val(p0);

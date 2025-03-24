@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'container/custom_container.dart';
-
 class CustomHeadTableItems {
   final int flex;
   final String text;
@@ -18,11 +16,11 @@ class CustomHeadTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomContainer(
-      elevation: 1,
-      pading: 10,
-      margin: 5,
-      width: 1,
+    return Container(
+      padding: const EdgeInsets.all(10),
+      color: Colors.transparent,
+      margin: const EdgeInsets.all(1),
+      width: double.infinity,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -58,11 +56,11 @@ class CustomBodyTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomContainer(
-      pading: padding,
-      margin: 7,
-      elevation: 1,
-      width: 1,
+    return Container(
+      padding: EdgeInsets.all(padding!),
+      color: Colors.transparent,
+      margin: const EdgeInsets.all(1),
+      width: double.infinity,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,

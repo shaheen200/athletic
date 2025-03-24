@@ -49,23 +49,21 @@ class _CustomDropDownState extends State<CustomDropDown> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Visibility(
-            visible: widget.labelText != null,
+            visible: widget.labelText == null ? false : true,
             child: TEXT(
-              text: " ${widget.labelText} ",
-              size: 20,
-              bold: true,
-              color: widget.color ?? Colors.black,
-            ),
+                text: " ${widget.labelText} ",
+                size: 20,
+                bold: true,
+                color: Colors.black),
           ),
           Visibility(
-            visible: widget.labelText != null,
+            visible: widget.labelText == null ? false : true,
             child: const SizedBox(height: 6),
           ),
           Container(
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: widget.color ?? Colors.black12),
+                borderRadius: BorderRadius.circular(10), color: Colors.white),
             child: Row(
               children: [
                 const SizedBox(width: 10),
@@ -78,6 +76,10 @@ class _CustomDropDownState extends State<CustomDropDown> {
                     dropdownColor: Theme.of(context).primaryColorLight,
                     style: TextStyle(color: Theme.of(context).primaryColor),
                     decoration: InputDecoration(
+                      filled: true, // Enables the background color
+                      fillColor: Colors.white,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
                       hintText: widget.hintText,
                       border: InputBorder.none,
                       contentPadding: const EdgeInsets.only(left: 5, right: 5),

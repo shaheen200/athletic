@@ -10,21 +10,12 @@ class EquepmentModels {
       required this.state,
       required this.price});
 
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'equipmentName': name,
-      'isAvailable': state,
-      'description': price,
-    };
-  }
-
   factory EquepmentModels.fromMap(Map<String, dynamic> map) {
     return EquepmentModels(
-      id: map['id'],
-      name: map['equipmentName'].toString(),
-      state: map['isAvailable'],
-      price: map['description'].toString(),
+      id: map['Id'],
+      name: map['EquipmentName'].toString(),
+      state: map['IsAvailable'],
+      price: map['Description'].toString(),
     );
   }
 

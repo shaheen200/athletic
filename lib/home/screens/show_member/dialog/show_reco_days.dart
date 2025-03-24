@@ -22,7 +22,12 @@ showRecoDays(BuildContext context, {required String userCode}) async {
               }
               if (!snapshot.data!.success) {
                 return Center(
-                  child: TEXT(text: snapshot.data!.msg, size: 18, bold: true),
+                  child: TEXT(
+                    text: snapshot.data!.msg,
+                    size: 18,
+                    bold: true,
+                    color: Colors.white,
+                  ),
                 );
               } else {
                 return Column(

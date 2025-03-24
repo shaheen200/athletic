@@ -30,7 +30,12 @@ class ShowMember extends StatelessWidget {
         }
         if (!snapshot.data!.success) {
           return Center(
-            child: TEXT(text: snapshot.data!.msg, size: 18, bold: true),
+            child: TEXT(
+              text: snapshot.data!.msg,
+              size: 18,
+              bold: true,
+              color: Colors.white,
+            ),
           );
         } else {
           controller.equal(snapshot.data!.data);
@@ -55,7 +60,7 @@ class ShowMember extends StatelessWidget {
                 child: CustomContainer(
                   width: 1,
                   margin: 40,
-                  color: Theme.of(context).primaryColor.withOpacity(0.5),
+                  color: const Color(0xffF4DCAC),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -65,7 +70,7 @@ class ShowMember extends StatelessWidget {
                           text: getText('Gym Members'),
                           size: 20,
                           bold: true,
-                          color: Theme.of(context).hintColor,
+                          color: Theme.of(context).primaryColorDark,
                         ),
                       ),
                       const SizedBox(
@@ -77,6 +82,7 @@ class ShowMember extends StatelessWidget {
                           children: [
                             Expanded(
                               child: CustomTextFieldByText2(
+                                textWriteColor: Colors.black,
                                 hintText: getText(
                                   'search',
                                 ),

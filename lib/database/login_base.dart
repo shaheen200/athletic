@@ -15,12 +15,11 @@ class LoginBase {
         body: jsonEncode({"email": email, "password": pw}),
       );
       final data = jsonDecode(response.body);
-
-      if (data['statusCode'] == 200) {
-        await LocalBase.saveUserData(data['data']);
+      if (data['StatusCode'] == 200) {
+        await LocalBase.saveUserData(data['Data']);
       }
       return ApiData(
-          success: data['statusCode'] == 200, msg: data['message'], data: []);
+          success: data['StatusCode'] == 200, msg: data['Message'], data: []);
     } catch (e) {
       return ApiData(success: false, msg: "$e", data: []);
     }

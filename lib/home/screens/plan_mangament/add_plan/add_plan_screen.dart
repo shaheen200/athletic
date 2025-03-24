@@ -41,17 +41,24 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              TEXT(
-                color: Theme.of(context).primaryColor,
-                text: "    ${getText('add_plan')}    ",
-                size: 28,
-                bold: true,
+              CustomContainer(
+                pading: 5,
+                color: Colors.white,
+                raduis: 50,
+                width: 0.1,
+                child: TEXT(
+                  center: true,
+                  color: Theme.of(context).primaryColor,
+                  text: getText('add_plan'),
+                  size: 20,
+                  bold: true,
+                ),
               ),
               const SizedBox(height: 10),
               CustomContainer(
                 width: 1,
                 pading: 20,
-                color: Theme.of(context).primaryColor.withOpacity(0.5),
+                color: const Color(0xffF4DCAC),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -135,8 +142,9 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                             );
                           }
                         },
+                        btnColor: Theme.of(context).primaryColor,
                         text: 'تأكيد',
-                        textcolor: Theme.of(context).primaryColorLight,
+                        textcolor: Theme.of(context).primaryColorDark,
                       ),
                     )
                   ],

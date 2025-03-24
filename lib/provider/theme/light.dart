@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 final ThemeData lightTheme = ThemeData(
     primaryColorLight: Colors.white,
     primaryColorDark: Colors.black,
-    primaryColor: const Color(0xff1A1363),
+    primaryColor: const Color(0xffE6B348),
     useMaterial3: true,
     splashColor: Colors.blue.shade200,
-    scaffoldBackgroundColor: const Color(0xffECE9E9),
+    scaffoldBackgroundColor: const Color(0xff171717),
     fontFamily: "tajawal",
     appBarTheme: const AppBarTheme(
         backgroundColor: Color(0xffECE9E9),

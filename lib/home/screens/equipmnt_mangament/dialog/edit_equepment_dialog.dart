@@ -38,6 +38,7 @@ editEquipmentDialog(
           CustomTextFieldByText2(
             textWriteColor: Colors.black,
             controller: name,
+            color: Colors.white,
             labelText: getText('name'),
             validator: (p0) {
               return val(p0);
@@ -48,6 +49,7 @@ editEquipmentDialog(
           ),
           CustomTextFieldByText2(
             textWriteColor: Colors.black,
+            color: Colors.white,
             type: CustomTextFieldByTextType.number,
             controller: price,
             labelText: getText('price'),

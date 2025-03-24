@@ -22,14 +22,14 @@ class UserModel {
   });
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-        id: '${json['id']}',
-        displayName: '${json['displayName']}',
-        userName: '${json['userName']}',
-        email: '${json['email']}',
-        phoneNumber: '${json['phoneNumber']}',
-        roles: json['roles'],
-        token: '${json['token']}',
-        refreshToken: '${json['refreshToken']}',
-        userCode: '${json['userCode']}');
+        id: '${json['Id']}',
+        displayName: '${json['DisplayName']}',
+        userName: '${json['UserName']}',
+        email: '${json['Email']}',
+        phoneNumber: '${json['PhoneNumber']}',
+        roles: json['Roles'],
+        token: '${json['Token']}',
+        refreshToken: '${json['RefreshToken']}',
+        userCode: '${json['UserCode']}');
   }
 }

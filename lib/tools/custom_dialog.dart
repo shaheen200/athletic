@@ -20,6 +20,7 @@ customDialog(
           surfaceTintColor: Colors.transparent,
           children: [
             CustomContainer(
+                color: const Color(0xffF4DCAC),
                 width: width,
                 height: height,
                 child: Column(

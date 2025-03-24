@@ -1,4 +1,5 @@
 import 'package:athletic/controller/application_controller.dart';
+import 'package:athletic/home/screens/plan_mangament/dialog/add_offer_dialog.dart';
 import 'package:athletic/home/screens/plan_mangament/dialog/edit_plan_dialog.dart';
 import 'package:athletic/models/plan_model.dart';
 import 'package:athletic/provider/language/get_text.dart';
@@ -60,18 +61,13 @@ class _ShowPlanViewState extends State<ShowPlanView> {
                     editPlanDialog(context, widget.controller, index);
                   },
                 ),
-                // CustomPopItems(
-                //   text: getText('stop'),
-                //   onTap: () {
-                //     msgDialog(
-                //         context1: context,
-                //         state: 0,
-                //         text: getText('stop_msg'),
-                //         onClick: () {
-                //           widget.controller.delete(index);
-                //         });
-                //   },
-                // )
+                CustomPopItems(
+                  text: getText('add_offer'),
+                  onTap: () {
+                    addOfferDialog(
+                        context, widget.controller.items[index].id.toString());
+                  },
+                ),
               ]))
         ]);
       },

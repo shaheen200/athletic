@@ -13,6 +13,8 @@ import 'package:athletic/tools/pop_menu/custom_pop.dart';
 import 'package:athletic/tools/waiting.dart';
 import 'package:flutter/material.dart';
 
+import 'dialog/renew_memeber_subsrip.dart';
+
 class ShowMemberView extends StatefulWidget {
   final ApplicationController<ClientModels> controller;
   final ShowMemeberState state;
@@ -100,7 +102,12 @@ class _ShowMemberViewState extends State<ShowMemberView> {
                     },
                   ),
                   CustomPopItems(
-                    text: getText('stop'),
+                    show: widget.state == ShowMemeberState.notActive,
+                    text: getText('renew'),
+                    onTap: () {
+                      renewMemeberPlans(context,
+                          controller: widget.controller, index: index);
+                    },
                   ),
                 ],
               ),

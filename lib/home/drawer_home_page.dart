@@ -2,6 +2,7 @@ import 'package:athletic/database/local_base.dart';
 import 'package:athletic/home/drawer_tile.dart';
 import 'package:athletic/models/user_model.dart';
 import 'package:athletic/tools/customText.dart';
+import 'package:athletic/tools/custom_image/customImage.dart';
 import 'package:flutter/material.dart';
 
 import '../controller/home_page_controller.dart';
@@ -42,18 +43,18 @@ class _DrawerHomePageState extends State<DrawerHomePage> {
             top: MediaQuery.of(context).size.height * 0.04, bottom: 6),
         child: Column(
           children: [
-            const Icon(Icons.person_pin, color: Colors.white, size: 100),
+            const CustomImage(path: 'image/avatar.png', w: 1, h: 0.1),
             const SizedBox(height: 10),
             TEXT(
                 text: userData == null ? '' : userData!.userName,
                 size: 20,
                 bold: true,
-                color: Colors.white),
+                color: Colors.black),
             const SizedBox(height: 10),
             TEXT(
                 text: userData == null ? '' : userData!.email,
                 size: 17,
-                color: Colors.white),
+                color: Colors.black),
             SizedBox(height: MediaQuery.of(context).size.height * 0.03),
             Expanded(
               child: ListView.builder(

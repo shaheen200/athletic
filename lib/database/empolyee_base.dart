@@ -43,7 +43,7 @@ class EmpolyeeBase {
       );
       final data = jsonDecode(response.body);
       return ApiData(
-          success: data['statusCode'] == 201, msg: data['message'], data: []);
+          success: data['StatusCode'] == 201, msg: data['Message'], data: []);
     } catch (e) {
       return ApiData(success: false, msg: "Error: $e", data: []);
     }
@@ -67,9 +67,9 @@ class EmpolyeeBase {
 
       final roles = jsonDecode(response.body);
       return ApiData<List<RoleModel>>(
-          success: roles['statusCode'] == 200,
-          msg: roles['message'],
-          data: RoleModel.fromMapList(roles['data'])
+          success: roles['StatusCode'] == 200,
+          msg: roles['Message'],
+          data: RoleModel.fromMapList(roles['Data'])
               .where(
                 (element) => element.id != '3',
               )
@@ -97,9 +97,9 @@ class EmpolyeeBase {
 
       final emp = jsonDecode(response.body);
       return ApiData<List<EmployeeModel>>(
-          success: emp['statusCode'] == 200,
-          msg: emp['message'],
-          data: EmployeeModel.convertListToEmployeeModel(emp['data']['items']));
+          success: emp['StatusCode'] == 200,
+          msg: emp['Message'],
+          data: EmployeeModel.convertListToEmployeeModel(emp['Data']['Items']));
     } catch (e) {
       return ApiData<List<EmployeeModel>>(success: false, msg: '$e', data: []);
     }
@@ -139,7 +139,7 @@ class EmpolyeeBase {
       );
       final data = jsonDecode(response.body);
       return ApiData(
-          success: data['statusCode'] == 200, msg: data['message'], data: []);
+          success: data['StatusCode'] == 200, msg: data['Message'], data: []);
     } catch (e) {
       return ApiData(success: false, msg: "Error: $e", data: []);
     }

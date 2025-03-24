@@ -11,18 +11,10 @@ class RoleModel {
 
   factory RoleModel.fromMap(Map<String, dynamic> map) {
     return RoleModel(
-      id: map['id'] ?? '',
-      name: map['name'] ?? '',
-      isSelected: map['durationDays'] ?? false,
+      id: map['Id'] ?? '',
+      name: map['Name'] ?? '',
+      isSelected: map['DurationDays'] ?? false,
     );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'id': id,
-      'name': name,
-      'isSelected': isSelected,
-    };
   }
 
   static List<RoleModel> fromMapList(List<dynamic> mapList) {

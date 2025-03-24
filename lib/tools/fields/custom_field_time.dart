@@ -1,39 +1,63 @@
 import 'package:flutter/material.dart';
-import '../container/custom_container.dart';
 import '../customText.dart';
+
+enum CustomFieldDateType { date, time }
 
 class CustomFieldDate extends StatelessWidget {
   final TextEditingController? controller;
   final String? labelText;
+  final Color? labelColor;
   final String? hintText;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
   final void Function(String)? onSelect;
+  final CustomFieldDateType type;
+
   const CustomFieldDate(
       {super.key,
       required this.onSelect,
       this.controller,
       this.onChanged,
+      this.labelColor,
       this.labelText,
       this.hintText,
-      this.validator});
+      this.validator,
+      this.type = CustomFieldDateType.date});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        DateTime? date = await showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(2024),
-            lastDate: DateTime(2124));
-        if (date != null) {
-          onSelect!.call("$date".split(" ")[0]);
-          if (controller != null) {
-            controller!.text = "$date".split(" ")[0];
+        if (type == CustomFieldDateType.date) {
+          DateTime? date = await showDatePicker(
+              context: context,
+              initialDate: DateTime.now(),
+              firstDate: DateTime(2024),
+              lastDate: DateTime(2124));
+          if (date != null) {
+            onSelect!.call("$date".split(" ")[0]);
+            if (controller != null) {
+              controller!.text = "$date".split(" ")[0];
+            }
+          } else {
+            onSelect!.call("");
           }
         } else {
-          onSelect!.call("");
+          TimeOfDay? time = await showTimePicker(
+            context: context,
+            initialTime: TimeOfDay.now(),
+          );
+          if (time != null) {
+            final xx =
+                '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}:00';
+
+            onSelect!.call(xx);
+            if (controller != null) {
+              controller!.text = xx;
+            }
+          } else {
+            onSelect!.call("");
+          }
         }
       },
       child: Padding(
@@ -47,14 +71,15 @@ class CustomFieldDate extends StatelessWidget {
                   text: " $labelText ",
                   size: 20,
                   bold: true,
-                  color: Theme.of(context).primaryColorDark),
+                  color: labelColor ?? Theme.of(context).primaryColorDark),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 6),
-              child: CustomContainer(
-                width: 1,
-                pading: 0,
-                margin: 0,
+              child: Container(
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.white),
                 child: Row(
                   children: [
                     const SizedBox(width: 20),

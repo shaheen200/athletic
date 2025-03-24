@@ -9,6 +9,7 @@ import 'package:athletic/tools/custom_appbar.dart';
 import 'package:athletic/tools/custom_btn/customBtn.dart';
 import 'package:athletic/tools/fields/custom_drop_down.dart';
 import 'package:athletic/tools/fields/custom_field_by_text_2.dart';
+import 'package:athletic/tools/fields/custom_text_field_by_text.dart';
 import 'package:athletic/tools/msg_dialog.dart';
 import 'package:athletic/tools/waiting.dart';
 import 'package:athletic/validator/field_val.dart';
@@ -52,7 +53,12 @@ class _AddEmpolyeeState extends State<AddEmpolyee> {
         }
         if (!snapshot.data!.success) {
           return Center(
-            child: TEXT(text: snapshot.data!.msg, size: 18, bold: true),
+            child: TEXT(
+              text: snapshot.data!.msg,
+              size: 18,
+              bold: true,
+              color: Colors.white,
+            ),
           );
         } else {
           job.equal(snapshot.data!.data.map(
@@ -73,23 +79,30 @@ class _AddEmpolyeeState extends State<AddEmpolyee> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      TEXT(
-                        color: Theme.of(context).primaryColor,
-                        text: getText('add_emp'),
-                        size: 28,
-                        bold: true,
+                      CustomContainer(
+                        pading: 5,
+                        color: Colors.white,
+                        raduis: 50,
+                        width: 0.1,
+                        child: TEXT(
+                          center: true,
+                          color: Theme.of(context).primaryColor,
+                          text: getText('add_emp'),
+                          size: 20,
+                          bold: true,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       CustomContainer(
                         width: .5,
+                        color: const Color(0xffEFCF8B),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Row(
                               children: [
                                 Expanded(
-                                  child: CustomTextFieldByText2(
-                                    textWriteColor: Colors.black,
+                                  child: CustomTextFieldByText(
                                     onChanged: (p0) {},
                                     controller: email,
                                     labelText: getText('email'),
@@ -100,8 +113,7 @@ class _AddEmpolyeeState extends State<AddEmpolyee> {
                                 ),
                                 const SizedBox(width: 10),
                                 Expanded(
-                                  child: CustomTextFieldByText2(
-                                    textWriteColor: Colors.black,
+                                  child: CustomTextFieldByText(
                                     onChanged: (p0) {},
                                     controller: name,
                                     labelText: getText('name'),
@@ -116,8 +128,7 @@ class _AddEmpolyeeState extends State<AddEmpolyee> {
                               children: [
                                 Expanded(
                                   flex: 1,
-                                  child: CustomTextFieldByText2(
-                                    textWriteColor: Colors.black,
+                                  child: CustomTextFieldByText(
                                     labelText: getText('pw'),
                                     pw: true,
                                     controller: pw,
@@ -131,7 +142,7 @@ class _AddEmpolyeeState extends State<AddEmpolyee> {
                                 // ),
                                 // Expanded(
                                 //     flex: 1,
-                                //     child: CustomTextFieldByText2(
+                                //     child: CustomTextFieldByText(
                                 //       textWriteColor: Colors.black,
                                 //       type: CustomTextFieldByTextType.number,
                                 //       labelText: getText('phone'),
@@ -171,8 +182,7 @@ class _AddEmpolyeeState extends State<AddEmpolyee> {
                                 ),
                               ],
                             ),
-                            CustomTextFieldByText2(
-                              textWriteColor: Colors.black,
+                            CustomTextFieldByText(
                               type: CustomTextFieldByTextType.number,
                               labelText: getText('Salary'),
                               controller: salary,
@@ -209,9 +219,11 @@ class _AddEmpolyeeState extends State<AddEmpolyee> {
                                           pOP(context);
                                           if (add.success) {
                                             name.clear();
-                                            // phone.clear();
+                                            salary.clear();
                                             pw.clear();
                                             email.clear();
+                                            gender.clear();
+                                            job.clear();
                                           }
                                           msgDialog(
                                               context1: context,
@@ -222,8 +234,7 @@ class _AddEmpolyeeState extends State<AddEmpolyee> {
                                     }
                                   },
                                   text: 'تأكيد',
-                                  textcolor:
-                                      Theme.of(context).primaryColorLight,
+                                  textcolor: Theme.of(context).primaryColorDark,
                                 ))
                           ],
                         ),

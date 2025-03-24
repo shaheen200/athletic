@@ -34,13 +34,13 @@ class EquipmentBase {
       );
       final data = jsonDecode(response.body);
       return ApiData<EquepmentModels?>(
-          success: data['statusCode'] == 201,
-          msg: data['message'],
+          success: data['StatusCode'] == 201,
+          msg: data['Message'],
           data: EquepmentModels(
-              id: data['data']['id'],
-              name: data['data']['equipmentName'],
-              state: data['data']['isAvailable'],
-              price: data['data']['description']));
+              id: data['Data']['Id'],
+              name: data['Data']['EquipmentName'],
+              state: data['Data']['IsAvailable'],
+              price: data['Data']['Description']));
     } catch (e) {
       return ApiData<EquepmentModels?>(
           success: false, msg: "Error: $e", data: null);
@@ -78,15 +78,15 @@ class EquipmentBase {
       if (response.statusCode == 200) {
         return ApiData<EquepmentModels?>(
             success: true,
-            msg: data['message'],
+            msg: data['Message'],
             data: EquepmentModels(
-                id: data['data']['id'],
-                name: data['data']['equipmentName'],
-                state: data['data']['isAvailable'],
-                price: data['data']['description']));
+                id: data['Data']['Id'],
+                name: data['Data']['EquipmentName'],
+                state: data['Data']['IsAvailable'],
+                price: data['Data']['Description']));
       } else {
         return ApiData<EquepmentModels?>(
-            success: false, msg: data['message'], data: null);
+            success: false, msg: data['Message'], data: null);
       }
     } catch (e) {
       return ApiData<EquepmentModels?>(success: false, msg: "$e", data: null);
@@ -114,11 +114,11 @@ class EquipmentBase {
       if (response.statusCode == 200) {
         return ApiData<List<EquepmentModels>>(
             success: true,
-            msg: data['message'],
-            data: EquepmentModels.fromListMap(data['data']));
+            msg: data['Message'],
+            data: EquepmentModels.fromListMap(data['Data']));
       } else {
         return ApiData<List<EquepmentModels>>(
-            success: false, msg: data['message'], data: []);
+            success: false, msg: data['Message'], data: []);
       }
     } catch (e) {
       return ApiData<List<EquepmentModels>>(
@@ -149,9 +149,9 @@ class EquipmentBase {
               {"equipmentId": id, "description": note, "cost": price}));
       final data = jsonDecode(response.body);
       if (response.statusCode == 201) {
-        return ApiData(success: true, msg: data['message'], data: []);
+        return ApiData(success: true, msg: data['Message'], data: []);
       } else {
-        return ApiData(success: false, msg: data['message'], data: []);
+        return ApiData(success: false, msg: data['Message'], data: []);
       }
     } catch (e) {
       return ApiData(success: false, msg: "$e", data: []);
@@ -179,11 +179,11 @@ class EquipmentBase {
       if (response.statusCode == 200) {
         return ApiData<List<FixEquipmentModel>>(
             success: true,
-            msg: repairDetails['message'],
-            data: FixEquipmentModel.convertListToModel(repairDetails['data']));
+            msg: repairDetails['Message'],
+            data: FixEquipmentModel.convertListToModel(repairDetails['Data']));
       } else {
         return ApiData<List<FixEquipmentModel>>(
-            success: false, msg: repairDetails['message'], data: []);
+            success: false, msg: repairDetails['Message'], data: []);
       }
     } catch (e) {
       return ApiData(success: false, msg: '$e', data: []);

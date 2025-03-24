@@ -27,7 +27,12 @@ class ShowEmpolyee extends StatelessWidget {
         }
         if (!snapshot.data!.success) {
           return Center(
-            child: TEXT(text: snapshot.data!.msg, size: 18, bold: true),
+            child: TEXT(
+              text: snapshot.data!.msg,
+              size: 18,
+              bold: true,
+              color: Colors.white,
+            ),
           );
         } else {
           controller.equal(snapshot.data!.data);
@@ -50,7 +55,7 @@ class ShowEmpolyee extends StatelessWidget {
                 child: CustomContainer(
                   margin: 40,
                   width: 0.9,
-                  color: Theme.of(context).primaryColor.withOpacity(0.5),
+                  color: const Color(0xffF4DCAC),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -62,6 +67,7 @@ class ShowEmpolyee extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: CustomTextFieldByText2(
+                                  textWriteColor: Colors.black,
                                   hintText: getText(
                                     'search',
                                   ),

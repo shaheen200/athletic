@@ -30,9 +30,9 @@ class PlanBase {
       );
       final data = jsonDecode(response.body);
       return ApiData(
-          success: data['statusCode'] == 201,
-          msg: data['message'],
-          data: data['data']);
+          success: data['StatusCode'] == 201,
+          msg: data['Message'],
+          data: data['Data']);
     } catch (e) {
       return ApiData(success: false, msg: "$e", data: []);
     }
@@ -55,14 +55,15 @@ class PlanBase {
         },
       );
       final plans = jsonDecode(response.body);
+
       if (response.statusCode == 200) {
         return ApiData<List<PlanModel>>(
             success: true,
-            msg: plans['message'],
-            data: PlanModel.fromMapList(plans['data']));
+            msg: plans['Message'],
+            data: PlanModel.fromMapList(plans['Data']));
       } else {
         return ApiData<List<PlanModel>>(
-            success: false, msg: plans['message'], data: []);
+            success: false, msg: plans['Message'], data: []);
       }
     } catch (e) {
       return ApiData<List<PlanModel>>(success: false, msg: "$e", data: []);
@@ -97,9 +98,9 @@ class PlanBase {
       );
       final data = jsonDecode(response.body);
       return ApiData(
-          success: data['statusCode'] == 200,
-          msg: data['message'],
-          data: data['data']);
+          success: data['StatusCode'] == 200,
+          msg: data['Message'],
+          data: data['Data']);
     } catch (e) {
       return ApiData(success: false, msg: "$e", data: []);
     }
@@ -126,19 +127,19 @@ class PlanBase {
       if (response.statusCode == 200) {
         return ApiData<List<PlanModel>>(
             success: true,
-            msg: plans['message'],
-            data: PlanModel.fromMapList(plans['data']).where(
+            msg: plans['Message'],
+            data: PlanModel.fromMapList(plans['Data']).where(
               (element) {
                 if (day) {
                   return element.durationDays == 1;
                 } else {
-                  return element.durationDays != 1;
+                  return element.durationDays != 1 && element.durationDays != 0;
                 }
               },
             ).toList());
       } else {
         return ApiData<List<PlanModel>>(
-            success: false, msg: plans['message'], data: []);
+            success: false, msg: plans['Message'], data: []);
       }
     } catch (e) {
       return ApiData<List<PlanModel>>(success: false, msg: "$e", data: []);

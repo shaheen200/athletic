@@ -1,13 +1,16 @@
 import 'package:athletic/home/screens/client_mangament/Home_page.dart';
 import 'package:athletic/home/screens/client_mangament/add_client/add_client.dart';
+import 'package:athletic/home/screens/close_day/show_close_day.dart';
 import 'package:athletic/home/screens/equipmnt_mangament/equipmen_screen.dart';
 import 'package:athletic/home/screens/goods_mangament/goods_screen.dart';
 import 'package:athletic/home/screens/me_mangament/my_info_screen.dart';
+import 'package:athletic/home/screens/offers/show_offers.dart';
 import 'package:athletic/home/screens/plan_mangament/plan_screen.dart';
 import 'package:athletic/home/screens/show_empolyee/add_empolyee.dart';
 import 'package:athletic/home/screens/show_empolyee/show/show_empolyee.dart';
 import 'package:athletic/home/screens/show_member/show.dart';
 import 'package:athletic/home/screens/store/store_page.dart';
+import 'package:athletic/home/screens/time_work/time_work_screen.dart';
 import 'package:athletic/models/home_drawer_screens_models.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:flutter/material.dart';
@@ -80,6 +83,23 @@ class HomePageController extends ChangeNotifier {
         icons: Icons.person,
         title: getText('me'),
         widget: const MyInfoScreen()),
+    HomeDrawerScreensModels(
+        index: 12,
+        icons: Icons.local_offer,
+        title: getText('offers'),
+        widget: const ShowOffers()),
+
+    HomeDrawerScreensModels(
+        index: 13,
+        icons: Icons.attach_money_rounded,
+        title: getText('close_day'),
+        widget: const ShowCloseDay()),
+
+    HomeDrawerScreensModels(
+        index: 14,
+        icons: Icons.timelapse_rounded,
+        title: getText('table_work'),
+        widget: const TimeWorkScreen()),
     // HomeDrawerScreensModels(
     //     index: 8,
     //     icons: Icons.food_bank_outlined,

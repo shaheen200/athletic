@@ -3,6 +3,7 @@ import 'package:athletic/database/api_data.dart';
 import 'package:athletic/database/login_base.dart';
 import 'package:athletic/home/home_page.dart';
 import 'package:athletic/tools/customText.dart';
+import 'package:athletic/tools/fields/custom_field_by_text_2.dart';
 import 'package:athletic/tools/funTool.dart';
 import 'package:athletic/tools/msg_dialog.dart';
 import 'package:athletic/tools/waiting.dart';
@@ -10,7 +11,6 @@ import 'package:flutter/material.dart';
 import '../provider/language/get_text.dart';
 import '../tools/custom_btn/customBtn.dart';
 import '../tools/custom_image/customImage.dart';
-import '../tools/fields/custom_text_field_by_text.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -51,8 +51,12 @@ class _LoginPageState extends State<LoginPage> {
                       bold: true,
                       color: Theme.of(context).primaryColor),
                   SizedBox(height: MediaQuery.of(context).size.height * 0.06),
-                  CustomTextFieldByText(
+                  CustomTextFieldByText2(
+                      colorBorder: Theme.of(context).primaryColor,
+                      color: Colors.white,
+                      textWriteColor: Colors.black,
                       labelText: getText("email"),
+                      labelcolor: Colors.white,
                       icon: Icons.email,
                       controller: email,
                       validator: (p0) {
@@ -64,7 +68,11 @@ class _LoginPageState extends State<LoginPage> {
                         return null;
                       }),
                   const SizedBox(height: 10),
-                  CustomTextFieldByText(
+                  CustomTextFieldByText2(
+                      colorBorder: Theme.of(context).primaryColor,
+                      color: Colors.white,
+                      labelcolor: Colors.white,
+                      textWriteColor: Colors.black,
                       labelText: getText("pw"),
                       icon: Icons.lock,
                       pw: true,
@@ -97,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                       }
                     },
                     text: getText("login"),
-                    textcolor: Theme.of(context).primaryColorLight,
+                    textcolor: Colors.black,
                   ),
                 ],
               ),

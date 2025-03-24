@@ -26,9 +26,9 @@ class OrderBase {
       );
       final data = jsonDecode(response.body);
       return ApiData(
-          success: data['statusCode'] == 201,
-          msg: data['message'],
-          data: data['data']);
+          success: data['StatusCode'] == 201,
+          msg: data['Message'],
+          data: data['Data']);
     } catch (e) {
       return ApiData(success: false, msg: "$e", data: []);
     }
@@ -80,25 +80,25 @@ class OrderBase {
       );
       final products = jsonDecode(response.body);
       if (response.statusCode == 200) {
-        final list = products['data'] as List;
+        final list = products['Data'] as List;
         return ApiData<List<GoodModel>>(
             success: true,
-            msg: products['message'],
+            msg: products['Message'],
             data: list
                 .map(
                   (e) => GoodModel(
-                      id: e['id'],
-                      name: e['name'],
-                      price: e['price'],
-                      count: e['count'],
-                      isActive: e['isAvailable']),
+                      id: e['Id'],
+                      name: e['Name'],
+                      price: e['Price'],
+                      count: e['Count'],
+                      isActive: e['IsAvailable']),
                 )
                 .toList()
                 .where((element) => element.count != 0 && element.isActive)
                 .toList());
       } else {
         return ApiData<List<GoodModel>>(
-            success: true, msg: products['message'], data: []);
+            success: true, msg: products['Message'], data: []);
       }
     } catch (e) {
       return ApiData<List<GoodModel>>(success: true, msg: '$e', data: []);

@@ -22,7 +22,7 @@ class _ShowPlanState extends State<ShowPlan> {
     return CustomContainer(
       width: 1,
       pading: 20,
-      color: Theme.of(context).primaryColor.withOpacity(0.5),
+      color: const Color(0xffF4DCAC),
       child: Column(
         children: [
           CustomHeadTable(headData: [

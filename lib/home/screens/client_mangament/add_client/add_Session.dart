@@ -33,7 +33,12 @@ class AddSession extends StatelessWidget {
         }
         if (!snapshot.data!.success) {
           return Center(
-            child: TEXT(text: snapshot.data!.msg, size: 18, bold: true),
+            child: TEXT(
+              text: snapshot.data!.msg,
+              size: 18,
+              bold: true,
+              color: Colors.white,
+            ),
           );
         } else {
           controller.equal(snapshot.data!.data.map(
@@ -56,11 +61,18 @@ class AddSession extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    TEXT(
-                      color: Theme.of(context).primaryColor,
-                      text: getText('add_day'),
-                      size: 28,
-                      bold: true,
+                    CustomContainer(
+                      pading: 5,
+                      color: Colors.white,
+                      raduis: 50,
+                      width: 0.1,
+                      child: TEXT(
+                        center: true,
+                        color: Theme.of(context).primaryColor,
+                        text: getText('add_day'),
+                        size: 20,
+                        bold: true,
+                      ),
                     ),
                     const SizedBox(height: 10),
                     Form(
@@ -85,6 +97,7 @@ class AddSession extends StatelessWidget {
                               textWriteColor: Colors.black,
                               type: CustomTextFieldByTextType.number,
                               icon: Icons.date_range_rounded,
+                              color: Colors.white,
                               onChanged: (p0) {},
                               enable: false,
                               controller: price,
@@ -100,6 +113,7 @@ class AddSession extends StatelessWidget {
                               textWriteColor: Colors.black,
                               type: CustomTextFieldByTextType.text,
                               controller: name,
+                              color: Colors.white,
                               labelText: getText('name'),
                               validator: (p0) {
                                 return val(p0);

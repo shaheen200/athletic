@@ -23,6 +23,7 @@ fixEquipmentDialog({required BuildContext context, required int id}) {
           CustomTextFieldByText2(
             type: CustomTextFieldByTextType.number,
             textWriteColor: Colors.black,
+            color: Colors.white,
             controller: price,
             labelText: getText('price'),
             validator: (p0) {
@@ -34,6 +35,7 @@ fixEquipmentDialog({required BuildContext context, required int id}) {
           ),
           CustomTextFieldByText2(
             textWriteColor: Colors.black,
+            color: Colors.white,
             controller: note,
             labelText: getText('note'),
             validator: (p0) {
