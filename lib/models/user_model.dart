@@ -8,6 +8,7 @@ class UserModel {
   final String token;
   final String refreshToken;
   final String userCode;
+  final bool admin;
 
   UserModel({
     required this.id,
@@ -19,6 +20,7 @@ class UserModel {
     required this.token,
     required this.refreshToken,
     required this.userCode,
+    required this.admin,
   });
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
@@ -30,6 +32,7 @@ class UserModel {
         roles: json['Roles'],
         token: '${json['Token']}',
         refreshToken: '${json['RefreshToken']}',
-        userCode: '${json['UserCode']}');
+        userCode: '${json['UserCode']}',
+        admin: json['Roles'][0] == 'Admin');
   }
 }

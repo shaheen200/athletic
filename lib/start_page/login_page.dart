@@ -1,8 +1,12 @@
 // ignore_for_file: use_build_context_synchronously
+import 'package:athletic/database/api_data.dart';
+import 'package:athletic/database/login_base.dart';
 import 'package:athletic/home/home_page.dart';
 import 'package:athletic/tools/customText.dart';
 import 'package:athletic/tools/fields/custom_field_by_text_2.dart';
 import 'package:athletic/tools/funTool.dart';
+import 'package:athletic/tools/msg_dialog.dart';
+import 'package:athletic/tools/waiting.dart';
 import 'package:flutter/material.dart';
 import '../provider/language/get_text.dart';
 import '../tools/custom_btn/customBtn.dart';
@@ -87,19 +91,18 @@ class _LoginPageState extends State<LoginPage> {
                     raduis: 10,
                     w: 1,
                     onClick: () async {
-                      // if (formKey.currentState!.validate()) {
-                      //   waiting(context: context);
-                      //   ApiData login = await LoginBase.login(
-                      //       email: email.text, pw: pw.text);
-                      //   pOP(context);
-                      //   if (login.success) {
-                      //     goToPage(context, const HomePage());
-                      //   } else {
-                      //     msgDialog(
-                      //         context1: context, state: -1, text: login.msg);
-                      //   }
-                      // }
-                      goToPage(context, const HomePage());
+                      if (formKey.currentState!.validate()) {
+                        waiting(context: context);
+                        ApiData login = await LoginBase.login(
+                            email: email.text, pw: pw.text);
+                        pOP(context);
+                        if (login.success) {
+                          goToPage(context, const HomePage());
+                        } else {
+                          msgDialog(
+                              context1: context, state: -1, text: login.msg);
+                        }
+                      }
                     },
                     text: getText("login"),
                     textcolor: Colors.black,

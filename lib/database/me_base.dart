@@ -63,7 +63,7 @@ class MeBase {
       return ApiData<Map<String, dynamic>>(
           success: data['StatusCode'] == 200,
           msg: data['Message'],
-          data: data['Data']);
+          data: {'Data': data['Data'], 'admin': user.admin});
     } catch (e) {
       return ApiData<Map<String, dynamic>>(success: false, msg: "$e", data: {});
     }

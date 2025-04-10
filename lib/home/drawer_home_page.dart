@@ -27,6 +27,7 @@ class _DrawerHomePageState extends State<DrawerHomePage> {
         setState(() {
           userData = value;
         });
+        widget.controller.opened(value!.admin);
       },
     );
     super.initState();

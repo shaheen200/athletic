@@ -67,87 +67,66 @@ class _MyInfoScreenState extends State<MyInfoScreen> {
               const CustomAppbar(),
               SizedBox(height: MediaQuery.of(context).size.height * 0.1),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: CustomContainer(
-                      color: const Color(0xffEFCF8B),
-                      width: 1,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const CustomImage(
-                              path: 'image/user.png', w: 0.2, h: 0.1),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: TEXT(text: getText('name'), size: 17)),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: TEXT(
-                                  text: snapshot.data!.data['UserName']
-                                      .toString(),
-                                  size: 17)),
-                          const SizedBox(height: 10),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: TEXT(text: getText('email'), size: 17)),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: TEXT(
-                                  text: snapshot.data!.data['Email'].toString(),
-                                  size: 17)),
-                          const SizedBox(height: 10),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: TEXT(text: getText('Gender'), size: 17)),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: TEXT(
-                                  text:
-                                      snapshot.data!.data['Gender'].toString(),
-                                  size: 17)),
-                          const SizedBox(height: 10),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: TEXT(text: getText('job'), size: 17)),
-                          Align(
-                              alignment: Alignment.centerLeft,
-                              child: TEXT(
-                                  text: snapshot.data!.data['Roles'][0]
-                                      .toString(),
-                                  size: 17)),
-                        ],
-                      ),
+                  CustomContainer(
+                    color: const Color(0xffEFCF8B),
+                    width: 0.3,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const CustomImage(
+                            path: 'image/user.png', w: 0.2, h: 0.1),
+                        Align(
+                            alignment: Alignment.centerRight,
+                            child: TEXT(text: getText('name'), size: 17)),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: TEXT(
+                                text: snapshot.data!.data['Data']['UserName']
+                                    .toString(),
+                                size: 17)),
+                        const SizedBox(height: 10),
+                        Align(
+                            alignment: Alignment.centerRight,
+                            child: TEXT(text: getText('email'), size: 17)),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: TEXT(
+                                text: snapshot.data!.data['Data']['Email']
+                                    .toString(),
+                                size: 17)),
+                        const SizedBox(height: 10),
+                        Align(
+                            alignment: Alignment.centerRight,
+                            child: TEXT(text: getText('Gender'), size: 17)),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: TEXT(
+                                text: snapshot.data!.data['Data']['Gender']
+                                    .toString(),
+                                size: 17)),
+                        const SizedBox(height: 10),
+                        Align(
+                            alignment: Alignment.centerRight,
+                            child: TEXT(text: getText('job'), size: 17)),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: TEXT(
+                                text: snapshot.data!.data['Data']['Roles'][0]
+                                    .toString(),
+                                size: 17)),
+                      ],
                     ),
                   ),
-                  // Expanded(
-                  //   child: CustomContainer(
-                  //     color: const Color(0xffEFCF8B),
-                  //     width: 1,
-                  //     height: 0.55,
-                  //     child: Column(
-                  //       children: [
-                  //         const SizedBox(height: 20),
-                  //         CustomTextFieldByText(
-                  //           controller: name,
-                  //           labelText: getText('name'),
-                  //         ),
-                  //         const SizedBox(height: 20),
-                  //         CustomTextFieldByText(
-                  //           controller: email,
-                  //           labelText: getText('email'),
-                  //         ),
-                  //         const SizedBox(height: 20),
-                  //         CustomBtn(onClick: () {}, text: getText('edit'))
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
-                  Expanded(
+                  Visibility(
+                    visible: snapshot.data!.data['admin'],
                     child: Form(
                       key: formKey,
                       child: CustomContainer(
                         color: const Color(0xffEFCF8B),
-                        width: 1,
+                        width: 0.3,
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
