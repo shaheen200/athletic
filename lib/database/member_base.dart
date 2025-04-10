@@ -83,6 +83,37 @@ class MemberBase {
     }
   }
 
+  static Future<ApiData<ClientModels?>> stop(
+      {required String userCode, required String numberOfDays}) async {
+    final url = Uri.parse('$domain/api/Membership/stop-membership');
+    final user = await LocalBase.getUserData();
+    if (user == null) {
+      return const ApiData(
+          success: false, msg: "سجل الدخول مره اخري", data: null);
+    }
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${user.token}',
+        },
+        body: jsonEncode({"userCode": userCode, "numberOfDays": numberOfDays}),
+      );
+      final data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        return ApiData<ClientModels?>(
+            success: true, msg: data['Message'] ?? '', data: null);
+      } else {
+        return ApiData<ClientModels?>(
+            success: false, msg: data['Message'], data: null);
+      }
+    } catch (e) {
+      return ApiData<ClientModels?>(
+          success: false, msg: "Error: $e", data: null);
+    }
+  }
+
   static Future<ApiData<List<ClientModels>>> get({
     required ShowMemeberState state,
   }) async {
@@ -107,7 +138,7 @@ class MemberBase {
         return ApiData<List<ClientModels>>(
             success: true,
             msg: data['Message'],
-            data: ClientModels.convertToModelList(data['Data']));
+            data: ClientModels.convertToModelList(data['Data']['Data']));
       } else {
         return ApiData<List<ClientModels>>(
             success: false, msg: data['Message'], data: []);
@@ -166,11 +197,11 @@ class MemberBase {
       if (response.statusCode == 200) {
         return ApiData<List<RecoDayModel>>(
             success: true,
-            msg: data['Message'],
+            msg: data['Message'] ?? '',
             data: RecoDayModel.fromListDynamic(data['Data']));
       } else {
         return ApiData<List<RecoDayModel>>(
-            success: false, msg: data['Message'], data: []);
+            success: false, msg: data['Message'] ?? '', data: []);
       }
     } catch (e) {
       return ApiData<List<RecoDayModel>>(
@@ -196,10 +227,37 @@ class MemberBase {
         body: jsonEncode({"membershipId": membershipId, "planId": planId}),
       );
       final data = jsonDecode(response.body);
-      if (response.statusCode == 201) {
+      if (response.statusCode == 200) {
         return ApiData(success: true, msg: data['Message'], data: null);
       } else {
         return ApiData(success: false, msg: data['Message'], data: null);
+      }
+    } catch (e) {
+      return ApiData(success: false, msg: "Error: $e", data: null);
+    }
+  }
+
+  static Future<ApiData> getAll() async {
+    final url = Uri.parse('$domain/api/Membership');
+    final user = await LocalBase.getUserData();
+    if (user == null) {
+      return const ApiData(
+          success: false, msg: "سجل الدخول مره اخري", data: null);
+    }
+    try {
+      final response = await http.get(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${user.token}',
+        },
+      );
+      final data = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        return ApiData(success: true, msg: data['Message'], data: data['Data']);
+      } else {
+        return ApiData(
+            success: false, msg: data['Message'], data: data['Data']);
       }
     } catch (e) {
       return ApiData(success: false, msg: "Error: $e", data: null);

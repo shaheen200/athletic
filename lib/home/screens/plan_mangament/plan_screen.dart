@@ -6,15 +6,18 @@ import 'package:flutter/material.dart';
 import 'add_plan/add_plan_screen.dart';
 import 'show_plan/Show_plan.dart';
 
+enum PlanScreenType { days, month }
+
 class PlanScreen extends StatelessWidget {
-  const PlanScreen({super.key});
+  final PlanScreenType type;
+  const PlanScreen({super.key, required this.type});
 
   @override
   Widget build(BuildContext context) {
     final ApplicationController<PlanModel> controller =
         ApplicationController<PlanModel>();
     return FutureBuilder(
-      future: PlanBase.getAllPlans(),
+      future: PlanBase.getPlanType(day: type == PlanScreenType.days),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
@@ -35,6 +38,7 @@ class PlanScreen extends StatelessWidget {
           return Column(
             children: [
               AddPlanScreen(
+                type: type,
                 controller: controller,
               ),
               Expanded(

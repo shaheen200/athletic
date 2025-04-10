@@ -133,7 +133,13 @@ class _StorePageState extends State<StorePage> {
                                     textWriteColor: Colors.black,
                                     controller: need,
                                     labelText: getText('count'),
-                                    onChanged: (p0) {},
+                                    onChanged: (p0) {
+                                      if (p0.isNotEmpty) {
+                                        total.text = (double.parse(p0) *
+                                                double.parse(price.text))
+                                            .toStringAsFixed(2);
+                                      }
+                                    },
                                     validator: (p0) {
                                       return val(p0);
                                     },

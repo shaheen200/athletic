@@ -2,6 +2,8 @@ import 'package:athletic/controller/application_controller.dart';
 import 'package:athletic/database/api_data.dart';
 import 'package:athletic/database/member_base.dart';
 import 'package:athletic/home/screens/show_member/dialog/show_reco_days.dart';
+import 'package:athletic/home/screens/show_member/dialog/stop_member_dialog.dart'
+    show stopMemeberDays;
 import 'package:athletic/home/screens/show_member/dialog/update_member.dart';
 import 'package:athletic/home/screens/show_member/show.dart';
 import 'package:athletic/models/client_models.dart';
@@ -98,6 +100,14 @@ class _ShowMemberViewState extends State<ShowMemberView> {
                     text: getText('edit'),
                     onTap: () {
                       editMemeberDays(context,
+                          controller: widget.controller, index: index);
+                    },
+                  ),
+                  CustomPopItems(
+                    show: widget.state == ShowMemeberState.active,
+                    text: getText('stop'),
+                    onTap: () {
+                      stopMemeberDays(context,
                           controller: widget.controller, index: index);
                     },
                   ),

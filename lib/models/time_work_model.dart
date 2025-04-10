@@ -20,7 +20,7 @@ class TimeWorkModel {
   factory TimeWorkModel.fromMap(Map<String, dynamic> map) {
     return TimeWorkModel(
       id: map['Id'],
-      dayOfWeek: map['DayOfWeek'],
+      dayOfWeek: map['DaysOfWeek'].isEmpty ? '' : map['DaysOfWeek'][0],
       startTime: map['StartTime'],
       endTime: map['EndTime'],
       groupType: map['GroupType'],

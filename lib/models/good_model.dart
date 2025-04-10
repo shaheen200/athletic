@@ -20,7 +20,7 @@ class GoodModel {
       name: json['Name'].toString(),
       price: json['Price'] ?? 0.0,
       count: json['Count'] ?? 0,
-      isActive: json['IsActive'] ?? false,
+      isActive: json['IsAvailable'] ?? false,
     );
   }
 

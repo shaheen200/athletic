@@ -70,6 +70,7 @@ renewMemeberPlans(BuildContext context,
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     CustomTextFieldByText2(
+                      color: Colors.white,
                       controller: numberDays,
                       textWriteColor: Colors.black,
                       labelText: getText('count_day'),
@@ -82,6 +83,7 @@ renewMemeberPlans(BuildContext context,
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
                     CustomTextFieldByText2(
+                      color: Colors.white,
                       enable: false,
                       textWriteColor: Colors.black,
                       labelText: getText('price'),
@@ -106,12 +108,7 @@ renewMemeberPlans(BuildContext context,
               membershipId: controller.items[index].id, planId: plans.value!);
           pOP(context);
           if (add.success) {
-            controller.editItem(
-              add.data,
-              (p0, p1) {
-                return p0.id == p1.id;
-              },
-            );
+            controller.delete(index);
             pOP(context);
           }
           await msgDialog(

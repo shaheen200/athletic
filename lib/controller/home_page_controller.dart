@@ -28,75 +28,82 @@ class HomePageController extends ChangeNotifier {
         index: 1,
         icons: Icons.paragliding_rounded,
         title: getText('plan'),
-        widget: const PlanScreen()),
+        widget: const PlanScreen(
+          type: PlanScreenType.month,
+        )),
     HomeDrawerScreensModels(
         index: 2,
+        icons: Icons.paragliding_rounded,
+        title: getText('plan_day'),
+        widget: const PlanScreen(type: PlanScreenType.days)),
+    HomeDrawerScreensModels(
+        index: 3,
         icons: Icons.person_add,
         title: getText('add_client'),
         widget: const AddClient()),
     HomeDrawerScreensModels(
-        index: 3,
+        index: 4,
         icons: Icons.people_outline,
         title: getText('show_client'),
         widget: const ShowMember(
           state: ShowMemeberState.active,
         )),
     HomeDrawerScreensModels(
-        index: 4,
+        index: 5,
         icons: Icons.people_outline,
         title: getText('renew'),
         widget: const ShowMember(
           state: ShowMemeberState.notActive,
         )),
     HomeDrawerScreensModels(
-        index: 5,
+        index: 6,
         icons: Icons.add,
         title: getText('add_day'),
         widget: const AddSession()),
     HomeDrawerScreensModels(
-        index: 6,
+        index: 7,
         icons: Icons.workspace_premium_outlined,
         title: getText('add_emp'),
         widget: const AddEmpolyee()),
     HomeDrawerScreensModels(
-        index: 7,
+        index: 8,
         icons: Icons.people_alt,
         title: getText('show_emp'),
         widget: const ShowEmpolyee()),
     HomeDrawerScreensModels(
-        index: 8,
+        index: 9,
         icons: Icons.visibility_outlined,
         title: getText('equepment'),
         widget: const EquipmenScreen()),
     HomeDrawerScreensModels(
-        index: 9,
+        index: 10,
         icons: Icons.food_bank_sharp,
         title: getText('goods'),
         widget: const GoodsScreen()),
     HomeDrawerScreensModels(
-        index: 10,
+        index: 11,
         icons: Icons.store,
         title: getText('store'),
         widget: const StorePage()),
     HomeDrawerScreensModels(
-        index: 11,
+        index: 12,
         icons: Icons.person,
         title: getText('me'),
         widget: const MyInfoScreen()),
     HomeDrawerScreensModels(
-        index: 12,
+        index: 13,
         icons: Icons.local_offer,
         title: getText('offers'),
         widget: const ShowOffers()),
 
     HomeDrawerScreensModels(
-        index: 13,
+        index: 14,
         icons: Icons.attach_money_rounded,
         title: getText('close_day'),
         widget: const ShowCloseDay()),
 
     HomeDrawerScreensModels(
-        index: 14,
+        index: 15,
         icons: Icons.timelapse_rounded,
         title: getText('table_work'),
         widget: const TimeWorkScreen()),

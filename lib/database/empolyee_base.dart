@@ -94,12 +94,11 @@ class EmpolyeeBase {
           'Authorization': 'Bearer ${user.token}',
         },
       );
-
       final emp = jsonDecode(response.body);
       return ApiData<List<EmployeeModel>>(
-          success: emp['StatusCode'] == 200,
-          msg: emp['Message'],
-          data: EmployeeModel.convertListToEmployeeModel(emp['Data']['Items']));
+          success: response.statusCode == 200,
+          msg: emp['Message'] ?? '',
+          data: EmployeeModel.convertListToEmployeeModel(emp['Data']));
     } catch (e) {
       return ApiData<List<EmployeeModel>>(success: false, msg: '$e', data: []);
     }

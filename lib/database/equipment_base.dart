@@ -115,7 +115,7 @@ class EquipmentBase {
         return ApiData<List<EquepmentModels>>(
             success: true,
             msg: data['Message'],
-            data: EquepmentModels.fromListMap(data['Data']));
+            data: EquepmentModels.fromListMap(data['Data']['Data']));
       } else {
         return ApiData<List<EquepmentModels>>(
             success: false, msg: data['Message'], data: []);

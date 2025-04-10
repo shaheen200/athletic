@@ -50,7 +50,7 @@ class ShowMember extends StatelessWidget {
                     text: state == ShowMemeberState.active
                         ? getText('Active Members')
                         : getText('renew'),
-                    size: 32,
+                    size: 25,
                     bold: true,
                     color: Theme.of(context).primaryColor,
                   ),
@@ -68,7 +68,7 @@ class ShowMember extends StatelessWidget {
                         alignment: Alignment.topRight,
                         child: TEXT(
                           text: getText('Gym Members'),
-                          size: 20,
+                          size: 18,
                           bold: true,
                           color: Theme.of(context).primaryColorDark,
                         ),

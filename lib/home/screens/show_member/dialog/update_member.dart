@@ -31,6 +31,7 @@ editMemeberDays(BuildContext context,
           mainAxisSize: MainAxisSize.min,
           children: [
             CustomTextFieldByText2(
+              color: Colors.white,
               controller: name,
               textWriteColor: Colors.black,
               labelText: getText('subscrip_name'),
@@ -42,6 +43,7 @@ editMemeberDays(BuildContext context,
               height: MediaQuery.of(context).size.height * 0.02,
             ),
             CustomTextFieldByText2(
+              color: Colors.white,
               textWriteColor: Colors.black,
               labelText: getText('phone'),
               validator: (p0) {
@@ -54,6 +56,7 @@ editMemeberDays(BuildContext context,
               height: MediaQuery.of(context).size.height * 0.02,
             ),
             CustomTextFieldByText2(
+              color: Colors.white,
               textWriteColor: Colors.black,
               labelText: getText('email'),
               validator: (p0) {

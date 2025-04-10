@@ -18,9 +18,9 @@ class CloseDayModel {
       transactions: (map['Transactions'] as List<dynamic>)
           .map((transaction) => Transaction.fromMap(transaction))
           .toList(),
-      totalIncome: map['TotalIncome'],
-      totalExpenses: map['TotalExpenses'],
-      netAmount: map['NetAmount'],
+      totalIncome: double.parse(map['TotalIncome'].toString()),
+      totalExpenses: double.parse(map['TotalExpenses'].toString()),
+      netAmount: double.parse(map['NetAmount'].toString()),
     );
   }
 

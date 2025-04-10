@@ -23,8 +23,16 @@ class TimeWorkBase {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ${user.token}',
         },
+        /**
+         * {
+          "DaysOfWeek": ["Thursday", "Friday"],
+          "startTime": "18:00:00",
+          "endTime": "20:00:00",
+          "groupType": "men"
+        }
+         */
         body: jsonEncode({
-          "dayOfWeek": dayOfWeek,
+          "DaysOfWeek": [dayOfWeek],
           "startTime": startTime,
           "endTime": endTime,
           "groupType": groupType

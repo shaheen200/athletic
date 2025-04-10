@@ -3,11 +3,11 @@
 import 'package:athletic/controller/application_controller.dart';
 import 'package:athletic/database/api_data.dart';
 import 'package:athletic/database/plan_base.dart';
+import 'package:athletic/home/screens/plan_mangament/plan_screen.dart';
 import 'package:athletic/models/plan_model.dart';
 import 'package:athletic/provider/language/get_text.dart';
 import 'package:athletic/tools/container/custom_container.dart';
 import 'package:athletic/tools/customText.dart';
-import 'package:athletic/tools/custom_appbar.dart';
 import 'package:athletic/tools/custom_btn/customBtn.dart';
 import 'package:athletic/tools/fields/custom_field_by_text_2.dart';
 import 'package:athletic/tools/msg_dialog.dart';
@@ -17,7 +17,9 @@ import 'package:flutter/material.dart';
 
 class AddPlanScreen extends StatefulWidget {
   final ApplicationController<PlanModel> controller;
-  const AddPlanScreen({super.key, required this.controller});
+  final PlanScreenType type;
+  const AddPlanScreen(
+      {super.key, required this.controller, required this.type});
 
   @override
   State<AddPlanScreen> createState() => _AddPlanScreenState();
@@ -29,13 +31,22 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
   TextEditingController countDay = TextEditingController();
   TextEditingController discound = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    if (widget.type == PlanScreenType.days) {
+      countDay.text = '1';
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomAppbar(),
-        SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+        // const CustomAppbar(),
+        // SizedBox(height: MediaQuery.of(context).size.height * 0.01),
         Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,6 +92,7 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                           ),
                           Expanded(
                               child: CustomTextFieldByText2(
+                            enable: widget.type == PlanScreenType.month,
                             textWriteColor: Colors.black,
                             type: CustomTextFieldByTextType.number,
                             color: Colors.white,

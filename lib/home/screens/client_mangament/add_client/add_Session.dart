@@ -3,7 +3,6 @@ import 'package:athletic/database/days_base.dart';
 import 'package:athletic/database/plan_base.dart';
 import 'package:athletic/tools/container/custom_container.dart';
 import 'package:athletic/tools/customText.dart';
-import 'package:athletic/tools/custom_appbar.dart';
 import 'package:athletic/tools/custom_btn/customBtn.dart';
 import 'package:athletic/tools/fields/custom_drop_down.dart';
 import 'package:athletic/tools/msg_dialog.dart';
@@ -51,117 +50,112 @@ class AddSession extends StatelessWidget {
                   });
             },
           ).toList());
-          return Column(
-            children: [
-              const CustomAppbar(),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-              Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    CustomContainer(
-                      pading: 5,
-                      color: Colors.white,
-                      raduis: 50,
-                      width: 0.1,
-                      child: TEXT(
-                        center: true,
-                        color: Theme.of(context).primaryColor,
-                        text: getText('add_day'),
-                        size: 20,
-                        bold: true,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Form(
-                      key: formKey,
-                      child: CustomContainer(
-                        width: .4,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            CustomDropDown(
-                              controller: controller,
-                              labelText: getText('plan'),
-                              validator: (p0) {
-                                return val(p0);
-                              },
-                              onChanged: (p0) {},
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            CustomTextFieldByText2(
-                              textWriteColor: Colors.black,
-                              type: CustomTextFieldByTextType.number,
-                              icon: Icons.date_range_rounded,
-                              color: Colors.white,
-                              onChanged: (p0) {},
-                              enable: false,
-                              controller: price,
-                              labelText: getText('price'),
-                              validator: (p0) {
-                                return val(p0);
-                              },
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            CustomTextFieldByText2(
-                              textWriteColor: Colors.black,
-                              type: CustomTextFieldByTextType.text,
-                              controller: name,
-                              color: Colors.white,
-                              labelText: getText('name'),
-                              validator: (p0) {
-                                return val(p0);
-                              },
-                            ),
-                            SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.02,
-                            ),
-                            Align(
-                                alignment: Alignment.centerLeft,
-                                child: CustomBtn(
-                                  onClick: () {
-                                    if (formKey.currentState!.validate()) {
-                                      msgDialog(
-                                        context1: context,
-                                        state: 0,
-                                        text: getText('add_msg'),
-                                        onClick: () async {
-                                          pOP(context);
-                                          waiting(context: context);
-                                          ApiData add = await DaysBase.add(
-                                              name: name.text,
-                                              planId: controller.value!);
-                                          pOP(context);
-                                          await msgDialog(
-                                              context1: context,
-                                              state: add.success ? 1 : -1,
-                                              text: add.msg);
-                                          if (add.success) {
-                                            price.clear();
-                                            name.clear();
-                                          }
-                                        },
-                                      );
-                                    }
-                                  },
-                                  text: 'تأكيد',
-                                  textcolor:
-                                      Theme.of(context).primaryColorLight,
-                                ))
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
+          /**const CustomAppbar(),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.1), */
+          return Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CustomContainer(
+                  pading: 5,
+                  color: Colors.white,
+                  raduis: 50,
+                  width: 0.15,
+                  child: TEXT(
+                    center: true,
+                    color: Theme.of(context).primaryColor,
+                    text: getText('add_day'),
+                    size: 20,
+                    bold: true,
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 10),
+                Form(
+                  key: formKey,
+                  child: CustomContainer(
+                    width: .4,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CustomDropDown(
+                          controller: controller,
+                          labelText: getText('plan'),
+                          validator: (p0) {
+                            return val(p0);
+                          },
+                          onChanged: (p0) {},
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
+                          type: CustomTextFieldByTextType.number,
+                          icon: Icons.date_range_rounded,
+                          color: Colors.white,
+                          onChanged: (p0) {},
+                          enable: false,
+                          controller: price,
+                          labelText: getText('price'),
+                          validator: (p0) {
+                            return val(p0);
+                          },
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        CustomTextFieldByText2(
+                          textWriteColor: Colors.black,
+                          type: CustomTextFieldByTextType.text,
+                          controller: name,
+                          color: Colors.white,
+                          labelText: getText('name'),
+                          validator: (p0) {
+                            return val(p0);
+                          },
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+                        Align(
+                            alignment: Alignment.centerLeft,
+                            child: CustomBtn(
+                              onClick: () {
+                                if (formKey.currentState!.validate()) {
+                                  msgDialog(
+                                    context1: context,
+                                    state: 0,
+                                    text: getText('add_msg'),
+                                    onClick: () async {
+                                      pOP(context);
+                                      waiting(context: context);
+                                      ApiData add = await DaysBase.add(
+                                          name: name.text,
+                                          planId: controller.value!);
+                                      pOP(context);
+                                      await msgDialog(
+                                          context1: context,
+                                          state: add.success ? 1 : -1,
+                                          text: add.msg);
+                                      if (add.success) {
+                                        price.clear();
+                                        name.clear();
+                                      }
+                                    },
+                                  );
+                                }
+                              },
+                              text: 'تأكيد',
+                              textcolor: Theme.of(context).primaryColorLight,
+                            ))
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           );
         }
       },

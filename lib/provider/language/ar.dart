@@ -57,7 +57,7 @@ final ar = {
   "Active Coaches": "المدربين النشطين",
   'Date Enrolled': 'تاريخ التسجيل',
   'Date Expiration': 'تاريخ انتهاء',
-  "plan": 'الخطه',
+  "plan": 'الخطط الشهرية',
   'discount': 'خصم',
   'subscrip_name': 'اسم المشترك',
   'enter_date': 'تاريخ الانضمام',
@@ -109,4 +109,5 @@ final ar = {
   'TransactionType': 'نوع العملية',
   'TransactionDate': 'تاريخ العملية',
   'Description': 'الوصف',
+  'plan_day': 'الخطط اليومية'
 };
