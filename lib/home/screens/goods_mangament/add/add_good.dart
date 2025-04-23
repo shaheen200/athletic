@@ -32,9 +32,10 @@ class _AddGoodState extends State<AddGood> {
   @override
   void initState() {
     state.equal([
-      CustomDropDownItems(text: 'فعال', value: true.toString(), onTap: () {}),
       CustomDropDownItems(
-          text: 'غير فعال', value: false.toString(), onTap: () {}),
+          text: getText('run'), value: true.toString(), onTap: () {}),
+      CustomDropDownItems(
+          text: getText('not_run'), value: false.toString(), onTap: () {}),
     ]);
     super.initState();
   }
@@ -73,6 +74,7 @@ class _AddGoodState extends State<AddGood> {
                   pading: 20,
                   color: const Color(0xffEFCF8B),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Row(
@@ -133,42 +135,40 @@ class _AddGoodState extends State<AddGood> {
                       SizedBox(
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
-                      Align(
-                          alignment: Alignment.centerLeft,
-                          child: CustomBtn(
-                            onClick: () {
-                              if (formKey.currentState!.validate()) {
-                                msgDialog(
-                                  context1: context,
-                                  state: 0,
-                                  text: getText('add_msg'),
-                                  onClick: () async {
-                                    pOP(context);
-                                    waiting(context: context);
-                                    ApiData add = await GoodsBase.add(
-                                        count: int.parse(count.text),
-                                        isActive: bool.parse(state.value!),
-                                        name: name.text,
-                                        price: (double.parse(price.text)));
-                                    pOP(context);
-                                    await msgDialog(
-                                        context1: context,
-                                        state: add.success ? 1 : -1,
-                                        text: add.msg);
-                                    if (add.success) {
-                                      name.clear();
-                                      price.clear();
-                                      count.clear();
+                      CustomBtn(
+                        onClick: () {
+                          if (formKey.currentState!.validate()) {
+                            msgDialog(
+                              context1: context,
+                              state: 0,
+                              text: getText('add_msg'),
+                              onClick: () async {
+                                pOP(context);
+                                waiting(context: context);
+                                ApiData add = await GoodsBase.add(
+                                    count: int.parse(count.text),
+                                    isActive: bool.parse(state.value!),
+                                    name: name.text,
+                                    price: (double.parse(price.text)));
+                                pOP(context);
+                                await msgDialog(
+                                    context1: context,
+                                    state: add.success ? 1 : -1,
+                                    text: add.msg);
+                                if (add.success) {
+                                  name.clear();
+                                  price.clear();
+                                  count.clear();
 
-                                      widget.controller.addItem(add.data);
-                                    }
-                                  },
-                                );
-                              }
-                            },
-                            text: 'تأكيد',
-                            textcolor: Theme.of(context).primaryColorDark,
-                          ))
+                                  widget.controller.addItem(add.data);
+                                }
+                              },
+                            );
+                          }
+                        },
+                        text: getText('accept'),
+                        textcolor: Theme.of(context).primaryColorDark,
+                      )
                     ],
                   ),
                 ),

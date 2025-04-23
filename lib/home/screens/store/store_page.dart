@@ -207,7 +207,7 @@ class _StorePageState extends State<StorePage> {
                                   );
                                 }
                               },
-                              text: 'تأكيد',
+                              text: getText('accept'),
                               textcolor: Theme.of(context).primaryColorDark,
                             )
                           ],

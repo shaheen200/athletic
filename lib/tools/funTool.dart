@@ -10,3 +10,11 @@ void goToPage(BuildContext context, Widget child) {
   Navigator.pushReplacement(
       context, MaterialPageRoute(builder: (context) => child));
 }
+
+void goToPage2(BuildContext context, Widget child) {
+  Navigator.pushAndRemoveUntil(
+    context,
+    MaterialPageRoute(builder: (context) => child),
+    (Route<dynamic> route) => false,
+  );
+}

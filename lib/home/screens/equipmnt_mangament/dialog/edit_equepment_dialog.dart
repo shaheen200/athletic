@@ -20,9 +20,10 @@ editEquipmentDialog(
   CustomDropDownController state = CustomDropDownController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   state.equal([
-    CustomDropDownItems(text: 'فعال', value: true.toString(), onTap: () {}),
     CustomDropDownItems(
-        text: 'غير فعال', value: false.toString(), onTap: () {}),
+        text: getText('run'), value: true.toString(), onTap: () {}),
+    CustomDropDownItems(
+        text: getText('not_run'), value: false.toString(), onTap: () {}),
   ]);
   name.text = controller.items[index].name;
   price.text = controller.items[index].price;

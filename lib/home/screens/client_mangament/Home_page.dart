@@ -57,48 +57,50 @@ class _HomePageState extends State<HomePage> {
           return Padding(
             padding: const EdgeInsets.all(12),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const CustomAppbar(),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.1),
-                CustomContainer(
-                  pading: 20,
-                  color: const Color(0xffEFCF8B),
-                  width: 0.6,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                const TEXT(
-                                    text: 'مرحبا مجددا',
-                                    size: 20,
-                                    color: Colors.black),
-                                const SizedBox(width: 5),
-                                TEXT(
-                                    text: userData == null
-                                        ? ''
-                                        : userData!.userName,
-                                    size: 20,
-                                    color: Theme.of(context).primaryColor,
-                                    bold: true),
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            const TEXT(
-                                text:
-                                    'مرحبًا بك فيEagle Gym المكان المثالي لتحقيق أهدافك الرياضية',
-                                size: 17,
-                                color: Colors.black)
-                          ],
+                Center(
+                  child: CustomContainer(
+                    pading: 20,
+                    color: const Color(0xffEFCF8B),
+                    width: 0.6,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  TEXT(
+                                      text: getText('welcome_again'),
+                                      size: 20,
+                                      color: Colors.black),
+                                  const SizedBox(width: 5),
+                                  TEXT(
+                                      text: userData == null
+                                          ? ''
+                                          : userData!.userName,
+                                      size: 20,
+                                      color: Theme.of(context).primaryColor,
+                                      bold: true),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              TEXT(
+                                  text: getText('welcome_msg'),
+                                  size: 17,
+                                  color: Colors.black)
+                            ],
+                          ),
                         ),
-                      ),
-                      const CustomImage(
-                          path: 'image/avatar.png', w: 0.1, h: 0.1),
-                    ],
+                        const CustomImage(
+                            path: 'image/avatar.png', w: 0.1, h: 0.1),
+                      ],
+                    ),
                   ),
                 ),
                 const Spacer(),
@@ -113,8 +115,10 @@ class _HomePageState extends State<HomePage> {
                         width: 1,
                         child: Column(
                           children: [
-                            const TEXT(
-                                text: 'نسبة النشطين', size: 17, bold: true),
+                            TEXT(
+                                text: getText('active_rate'),
+                                size: 17,
+                                bold: true),
                             const Spacer(),
                             CustomInductor(
                                 inductor: ((snapshot
@@ -126,12 +130,13 @@ class _HomePageState extends State<HomePage> {
                                     MediaQuery.of(context).size.height * 0.2,
                                 borderWidth: 20,
                                 child: TEXT(
-                                    text: ((snapshot.data!.data[
-                                                    'TotalActiveMembers'] /
-                                                snapshot.data!
-                                                    .data['TotalMembers']) *
-                                            100)
-                                        .toString(),
+                                    text: double.parse(((snapshot.data!.data[
+                                                        'TotalActiveMembers'] /
+                                                    snapshot.data!
+                                                        .data['TotalMembers']) *
+                                                100)
+                                            .toString())
+                                        .toStringAsFixed(1),
                                     size: 20,
                                     bold: true)),
                             const Spacer(),
@@ -151,8 +156,7 @@ class _HomePageState extends State<HomePage> {
                         width: 1,
                         child: Column(
                           children: [
-                            const TEXT(
-                                text: 'الاشتركات النشطة', size: 17, bold: true),
+                            TEXT(text: getText('active'), size: 17, bold: true),
                             const Spacer(),
                             TEXT(
                                 text:
@@ -175,8 +179,8 @@ class _HomePageState extends State<HomePage> {
                         width: 1,
                         child: Column(
                           children: [
-                            const TEXT(
-                                text: 'الاشتركات المنتهية',
+                            TEXT(
+                                text: getText('not_active'),
                                 size: 17,
                                 bold: true),
                             const Spacer(),
@@ -193,13 +197,11 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 const Spacer(),
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: CustomBtn(
-                        onClick: () {
-                          goToPage(context, const LoginPage());
-                        },
-                        text: getText('logout'))),
+                CustomBtn(
+                    onClick: () {
+                      goToPage(context, const LoginPage());
+                    },
+                    text: getText('logout')),
               ],
             ),
           );

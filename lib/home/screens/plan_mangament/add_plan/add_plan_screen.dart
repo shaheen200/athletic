@@ -71,6 +71,7 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                 pading: 20,
                 color: const Color(0xffF4DCAC),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Form(
@@ -122,42 +123,39 @@ class _AddPlanScreenState extends State<AddPlanScreen> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: CustomBtn(
-                        onClick: () {
-                          if (formKey.currentState!.validate()) {
-                            msgDialog(
-                              context1: context,
-                              state: 0,
-                              text: getText('add_msg'),
-                              onClick: () async {
-                                pOP(context);
-                                waiting(context: context);
-                                ApiData add = await PlanBase.add(
-                                    planName: name.text,
-                                    durationDays: countDay.text,
-                                    price: price.text);
-                                pOP(context);
-                                msgDialog(
-                                    context1: context,
-                                    state: add.success ? 1 : -1,
-                                    text: add.msg);
-                                if (add.success) {
-                                  name.clear();
-                                  price.clear();
-                                  countDay.clear();
-                                  widget.controller
-                                      .addItem(PlanModel.fromMap(add.data));
-                                }
-                              },
-                            );
-                          }
-                        },
-                        btnColor: Theme.of(context).primaryColor,
-                        text: 'تأكيد',
-                        textcolor: Theme.of(context).primaryColorDark,
-                      ),
+                    CustomBtn(
+                      onClick: () {
+                        if (formKey.currentState!.validate()) {
+                          msgDialog(
+                            context1: context,
+                            state: 0,
+                            text: getText('add_msg'),
+                            onClick: () async {
+                              pOP(context);
+                              waiting(context: context);
+                              ApiData add = await PlanBase.add(
+                                  planName: name.text,
+                                  durationDays: countDay.text,
+                                  price: price.text);
+                              pOP(context);
+                              msgDialog(
+                                  context1: context,
+                                  state: add.success ? 1 : -1,
+                                  text: add.msg);
+                              if (add.success) {
+                                name.clear();
+                                price.clear();
+                                countDay.clear();
+                                widget.controller
+                                    .addItem(PlanModel.fromMap(add.data));
+                              }
+                            },
+                          );
+                        }
+                      },
+                      btnColor: Theme.of(context).primaryColor,
+                      text: getText('accept'),
+                      textcolor: Theme.of(context).primaryColorDark,
                     )
                   ],
                 ),

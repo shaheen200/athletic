@@ -125,12 +125,12 @@ class _ShowCloseDayState extends State<ShowCloseDay> {
                           children: [
                             TEXT(
                                 text:
-                                    'الصافي اليومي : ${snapshot.data!.data!.netAmount}',
+                                    '${getText('ern')} : ${snapshot.data!.data!.netAmount}',
                                 size: 19,
                                 bold: true),
                             TEXT(
                                 text:
-                                    'المصروفات : ${snapshot.data!.data!.totalExpenses}',
+                                    '${getText('cost')} : ${snapshot.data!.data!.totalExpenses}',
                                 size: 19,
                                 bold: true),
                           ],

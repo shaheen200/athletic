@@ -52,8 +52,8 @@ class _ShowEquipmentViewState extends State<ShowEquipmentView> {
               flex: 2,
               widget: TEXT(
                   text: widget.controller.items[index].state
-                      ? 'فعال'
-                      : 'غير فعال',
+                      ? getText('run')
+                      : getText('not_run'),
                   size: 17,
                   bold: true)),
           CustomBodyTableItems(

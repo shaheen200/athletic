@@ -56,8 +56,8 @@ class _ShowGoodsViewState extends State<ShowGoodsView> {
                 flex: 2,
                 widget: TEXT(
                     text: widget.controller.items[index].isActive
-                        ? 'فعال'
-                        : 'غير فعال',
+                        ? getText('run')
+                        : getText('not_run'),
                     size: 17,
                     bold: true)),
             CustomBodyTableItems(

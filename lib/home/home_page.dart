@@ -1,3 +1,4 @@
+import 'package:athletic/controller/change_theme.dart';
 import 'package:flutter/material.dart';
 
 import '../controller/home_page_controller.dart';
@@ -16,11 +17,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
-        children: [
-          DrawerHomePage(controller: controller),
-          Expanded(child: ScreenView(controller: controller))
-        ],
+      body: Directionality(
+        textDirection:
+            ChangeProvider.language ? TextDirection.ltr : TextDirection.rtl,
+        child: Row(
+          children: [
+            DrawerHomePage(controller: controller),
+            Expanded(child: ScreenView(controller: controller))
+          ],
+        ),
       ),
     );
   }

@@ -89,6 +89,7 @@ class _AddClientState extends State<AddClient> {
                     color: const Color(0xffEFCF8B),
                     width: .5,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Row(
@@ -189,43 +190,41 @@ class _AddClientState extends State<AddClient> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * 0.02,
                         ),
-                        Align(
-                            alignment: Alignment.centerLeft,
-                            child: CustomBtn(
-                              onClick: () {
-                                if (formKey.currentState!.validate()) {
-                                  msgDialog(
-                                    context1: context,
-                                    state: 0,
-                                    text: getText('add_msg'),
-                                    onClick: () async {
-                                      pOP(context);
-                                      waiting(context: context);
-                                      ApiData add = await MemberBase.add(
-                                          email: email.text,
-                                          phone: phone.text,
-                                          name: name.text,
-                                          planId: controller.value!);
-                                      pOP(context);
-                                      await msgDialog(
-                                          context1: context,
-                                          state: add.success ? 1 : -1,
-                                          text: add.msg);
-                                      if (add.success) {
-                                        price.clear();
-                                        name.clear();
-                                        countDay.clear();
-                                        controller.clear();
-                                        phone.clear();
-                                        email.clear();
-                                      }
-                                    },
-                                  );
-                                }
-                              },
-                              text: 'تأكيد',
-                              textcolor: Theme.of(context).primaryColorLight,
-                            ))
+                        CustomBtn(
+                          onClick: () {
+                            if (formKey.currentState!.validate()) {
+                              msgDialog(
+                                context1: context,
+                                state: 0,
+                                text: getText('add_msg'),
+                                onClick: () async {
+                                  pOP(context);
+                                  waiting(context: context);
+                                  ApiData add = await MemberBase.add(
+                                      email: email.text,
+                                      phone: phone.text,
+                                      name: name.text,
+                                      planId: controller.value!);
+                                  pOP(context);
+                                  await msgDialog(
+                                      context1: context,
+                                      state: add.success ? 1 : -1,
+                                      text: add.msg);
+                                  if (add.success) {
+                                    price.clear();
+                                    name.clear();
+                                    countDay.clear();
+                                    controller.clear();
+                                    phone.clear();
+                                    email.clear();
+                                  }
+                                },
+                              );
+                            }
+                          },
+                          text: getText('accept'),
+                          textcolor: Theme.of(context).primaryColorLight,
+                        )
                       ],
                     ),
                   ),
