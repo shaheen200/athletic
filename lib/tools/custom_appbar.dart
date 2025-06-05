@@ -34,17 +34,7 @@ class CustomAppbar extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-            TextButton(
-                onPressed: () {},
-                child: TEXT(
-                    text: 'Feedback',
-                    size: 17,
-                    color: Theme.of(context).primaryColor)),
-            IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.notifications,
-                    size: 35, color: Theme.of(context).primaryColor)),
+            SizedBox(width: MediaQuery.of(context).size.width * 0.08),
             TextButton(
                 onPressed: () {
                   msgDialog(

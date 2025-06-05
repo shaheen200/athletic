@@ -37,7 +37,8 @@ class CustomBtn extends StatelessWidget {
       height: height,
       child: Text(
         text,
-        style: TextStyle(fontSize: 17, color: textcolor),
+        style: TextStyle(
+            fontSize: 17, color: textcolor, fontWeight: FontWeight.bold),
       ),
     );
   }
